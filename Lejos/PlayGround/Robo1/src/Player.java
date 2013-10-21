@@ -22,16 +22,12 @@ public class Player {
         Player player = new Player();
         System.out.println(" Started ");
 
-        System.out.println(" kick 1 ");
-        player.KickSomething();
-        Thread.sleep(1000);
-        System.out.println(" kick 2 ");
-        player.KickSomething();
-
+        
         System.out.println(" wait to quit ");
         Button.waitForAnyPress();
     }
 
+    
     private void KickSomething() {
         kick.Do();
         toPosition.Do();

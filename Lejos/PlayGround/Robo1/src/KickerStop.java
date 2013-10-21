@@ -1,6 +1,8 @@
+
 import lejos.nxt.TouchSensor;
 
 public class KickerStop extends KickerOperator {
+
     TouchSensor sensor;
 
     public KickerStop(TouchSensor sensor) {
@@ -8,7 +10,8 @@ public class KickerStop extends KickerOperator {
     }
 
     @Override
-    public Boolean Do() {
+    public synchronized Boolean Do() {
+
         if (sensor.isPressed()) {
             if (kicker.isMoving()) {
                 int prevSpeed = kicker.getSpeed();
