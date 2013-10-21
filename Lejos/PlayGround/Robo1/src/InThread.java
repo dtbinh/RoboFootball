@@ -1,9 +1,9 @@
 public class InThread extends Thread 
 {
-    private KickerOperator operator;
+    private Operator operator;
     private Boolean terminate=false;
     
-    public InThread(KickerOperator operator) 
+    public InThread(Operator operator) 
     {
         this.operator=operator;
     } 

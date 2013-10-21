@@ -1,9 +1,8 @@
 import lejos.robotics.RegulatedMotor;
 
-public abstract class KickerOperator 
+public abstract class KickerOperator extends Operator
 {
     public static RegulatedMotor kicker;
-    public abstract Boolean Do();
 }
 
 
