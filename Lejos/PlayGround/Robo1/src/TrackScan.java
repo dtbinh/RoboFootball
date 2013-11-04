@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import lejos.geom.Point;
 import lejos.nxt.UltrasonicSensor;
 
 public class TrackScan extends TrackOperator {
     UltrasonicSensor sonar;
-    List<Pair<Double,Double>> map;
-    public Double delta=30.0;
+    List<Point> map;
+    public float delta=10.0f;
     
     private Boolean terminate= false;
     public void Terminate()
@@ -21,23 +22,29 @@ public class TrackScan extends TrackOperator {
     @Override
     public Boolean Do() {
         int count = (int)(360.0/delta);
-        System.out.println("Scanning "+count);
         for(int i=0;i<count; i++)
         {
-            System.out.println("Scanning "+i*delta);
             if(terminate)
             return true;
-            turnAndMeasure(i*delta);
+            
+            float dgr=(i+1)*delta;
+            
+            turnAndMeasure(dgr);
         }
-        System.out.println("ololol! ");
         terminate=true;
         return true;
     }
     
-    private synchronized void turnAndMeasure(Double dgr)
+    private synchronized void turnAndMeasure(float dgr)
     {
-        pilot.setRotateSpeed(100);
+        Double prevSpeed= pilot.getRotateSpeed();
+        pilot.setRotateSpeed(pilot.getMaxRotateSpeed());
         pilot.rotate(delta);
-        map.add(new Pair<>(dgr,new Double(sonar.getDistance())));
+        float r= sonar.getDistance();
+        Point point = new Point((float) Math.toRadians(dgr));
+        point=point.multiply(r);
+        System.out.println(dgr);
+        map.add(point);
+        pilot.setRotateSpeed(prevSpeed);
     }
 }

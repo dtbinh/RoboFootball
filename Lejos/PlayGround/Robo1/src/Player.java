@@ -1,5 +1,6 @@
 
 import java.util.List;
+import lejos.geom.Point;
 import lejos.nxt.Button;
 import lejos.nxt.Motor;
 
@@ -8,6 +9,7 @@ public class Player {
     Operator kick = new KickerKick();
     Operator toPosition = new KickerToPosition();
     Scanner scanner = new Scanner();
+
     public Player() {
         KickerOperator.kicker = Motor.A;
         toPosition.Do();
@@ -23,34 +25,36 @@ public class Player {
         Player player = new Player();
         System.out.println(" Started ");
 
-        
-        List<Pair<Double,Double>> map= player.ScanForSomething();
-        
-        for(Pair<Double,Double> m : map)
-        {
-            System.out.println(" Angle: "+m.getLeft()+" Distance: "+m.getRight());
-            Thread.sleep(1000);
-        }
+        Point closestPoint = player.ScanForSomething();
+
+        System.out.println("Closest: "+closestPoint.x+" "+closestPoint.y);
+        System.out.println("dist: "+closestPoint.length());
         
         
+        
+        
+
         System.out.println(" wait to quit ");
         Button.waitForAnyPress();
     }
 
-    private List<Pair<Double,Double>> ScanForSomething()
-    {
+    private Point ScanForSomething() {
         scanner.Do();
-        return scanner.map;    
+        List<Point> map = scanner.map;
+        Point closestPoint = new Point(0.0f, 255.0f);
+        for (Point point : map) {
+            if (point.length() < closestPoint.length()) {
+                closestPoint = point;
+            }
+        }
+        return closestPoint;
     }
-    
+
     private void KickSomething() {
         kick.Do();
         toPosition.Do();
     }
-    
-    
-    
-    
+
     public void GoTo(int x, int y) {
     }
 }

@@ -1,10 +1,11 @@
 import java.util.List;
+import lejos.geom.Point;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 
 public class Scanner extends Operator {
 
-    public List<Pair<Double,Double>> map;
+    public List<Point> map;
 
     @Override
     public Boolean Do() {
