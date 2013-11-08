@@ -5,7 +5,7 @@ public class KickerKick extends KickerOperator {
     public synchronized Boolean Do() {
 //        if (!kicker.isMoving()) {
             System.out.println(" kick! ");
-            kicker.setSpeed(1200);
+            kicker.setSpeed((int)kicker.getMaxSpeed());
             kicker.rotate(90);
             return true;
 //        }

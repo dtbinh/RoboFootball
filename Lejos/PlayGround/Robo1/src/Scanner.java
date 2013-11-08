@@ -9,7 +9,7 @@ public class Scanner extends Operator {
 
     @Override
     public Boolean Do() {
-        TrackScan trackScan = new TrackScan(new UltrasonicSensor(SensorPort.S2));
+        TrackScanner trackScan = new TrackScanner(new UltrasonicSensor(SensorPort.S2));
         map= trackScan.map;
         InThread scanner = new InThread(trackScan);
         scanner.start();

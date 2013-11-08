@@ -3,13 +3,19 @@ import java.util.List;
 import lejos.geom.Point;
 import lejos.nxt.Button;
 import lejos.nxt.Motor;
+import lejos.robotics.navigation.Waypoint;
 
 public class Player {
 
     Operator kick = new KickerKick();
     Operator toPosition = new KickerToPosition();
     Scanner scanner = new Scanner();
-
+    Walker walker = new Walker();
+    
+    Point gate= new Point(0,0);
+    
+    float RoboR= 10.0f;
+    
     public Player() {
         KickerOperator.kicker = Motor.A;
         toPosition.Do();
@@ -31,13 +37,25 @@ public class Player {
         System.out.println("dist: "+closestPoint.length());
         
         
+        Point position= player.calculateWayPoint(closestPoint);
         
-        
-
+        player.walker.Path.add(new Waypoint(position));
+        player.walker.Do();
+        player.walker.reorient=true;
+        player.walker.Path.add(new Waypoint(position));
+        player.walker.Do();
+        player.KickSomething();
         System.out.println(" wait to quit ");
         Button.waitForAnyPress();
     }
-
+    
+    private Point calculateWayPoint(Point ball)
+    {
+        Point v= ball.add(gate.reverse());
+        Point vn=v.getNormalized();
+        return vn.multiply(RoboR).add(ball);
+    }
+    
     private Point ScanForSomething() {
         scanner.Do();
         List<Point> map = scanner.map;

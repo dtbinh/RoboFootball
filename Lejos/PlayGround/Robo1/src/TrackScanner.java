@@ -3,18 +3,19 @@ import java.util.List;
 import lejos.geom.Point;
 import lejos.nxt.UltrasonicSensor;
 
-public class TrackScan extends TrackOperator {
+public class TrackScanner extends TrackOperator {
     UltrasonicSensor sonar;
     List<Point> map;
     public float delta=10.0f;
     
     private Boolean terminate= false;
+    @Override
     public void Terminate()
     {
         terminate= true;
     }
     
-    public TrackScan(UltrasonicSensor sonar) {
+    public TrackScanner(UltrasonicSensor sonar) {
         this.map = new ArrayList<>();
         this.sonar = sonar;
     }
