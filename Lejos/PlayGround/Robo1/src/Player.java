@@ -12,7 +12,7 @@ public class Player {
     Scanner scanner = new Scanner();
     Walker walker = new Walker();
     
-    Point gate= new Point(0,0);
+    Point gate= new Point(35,0);  
     
     float RoboR= 10.0f;
     
@@ -36,13 +36,16 @@ public class Player {
         System.out.println("Closest: "+closestPoint.x+" "+closestPoint.y);
         System.out.println("dist: "+closestPoint.length());
         
-        
         Point position= player.calculateWayPoint(closestPoint);
         
+        System.out.println("position: "+position.x+" "+position.y);
+        
+        this does not work!
         player.walker.Path.add(new Waypoint(position));
         player.walker.Do();
+        Walker is not wolk thru path Create separete project and make it work!
         player.walker.reorient=true;
-        player.walker.Path.add(new Waypoint(position));
+        player.walker.Path.add(new Waypoint(player.gate));
         player.walker.Do();
         player.KickSomething();
         System.out.println(" wait to quit ");
