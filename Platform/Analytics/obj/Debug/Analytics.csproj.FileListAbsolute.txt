@@ -1,0 +1,4 @@
+D:\Programming\RoboFootball\Platform\Analytics\bin\Analytics.dll
+D:\Programming\RoboFootball\Platform\Analytics\bin\Analytics.pdb
+D:\Programming\RoboFootball\Platform\Analytics\obj\Debug\Analytics.dll
+D:\Programming\RoboFootball\Platform\Analytics\obj\Debug\Analytics.pdb

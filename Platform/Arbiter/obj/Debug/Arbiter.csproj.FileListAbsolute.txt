@@ -1,0 +1,5 @@
+D:\Programming\RoboFootball\Platform\Arbiter\bin\Arbiter.dll
+D:\Programming\RoboFootball\Platform\Arbiter\bin\Arbiter.pdb
+D:\Programming\RoboFootball\Platform\Arbiter\obj\Debug\Arbiter.csprojResolveAssemblyReference.cache
+D:\Programming\RoboFootball\Platform\Arbiter\obj\Debug\Arbiter.dll
+D:\Programming\RoboFootball\Platform\Arbiter\obj\Debug\Arbiter.pdb
