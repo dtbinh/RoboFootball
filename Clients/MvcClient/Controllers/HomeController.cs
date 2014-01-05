@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ServiceModel;
+using MvcClient.AnalyticsSvc;
 
 namespace MvcClient.Controllers
 {
@@ -11,14 +12,14 @@ namespace MvcClient.Controllers
     {
         public ActionResult Index()
         {
-            TODO: Call wcf from mvc :1. with http binding, 2. with pipe binding
-            Create interfaces for each and every module
+            //TODO: Call wcf from mvc :1. with http binding, 2. with pipe binding
+            //Create interfaces for each and every module
 
-            Currently mvc client and one of pplatform services are deployed
+            //Currently mvc client and one of pplatform services are deployed
 
             using (var client = new AnalyticsClient())
             {
-                ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+                ViewBag.Message ="!!!!!! MEssage is: "+ client.GetData(10);
             }
 
 
