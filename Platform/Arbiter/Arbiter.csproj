@@ -67,6 +67,7 @@
       <DependentUpon>ArbiterService.svc</DependentUpon>
     </Compile>
     <Compile Include="IArbiter.cs" />
+    <Compile Include="Contracts\IGameManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
