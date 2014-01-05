@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ecf8fd0d-61f2-4f96-905f-a87773287e5d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2002/Analytics/AnalyticsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AnalyticsService.xsd" MetadataType="Schema" ID="dd6c7225-66f3-4ca5-baca-265aec539d5b" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AnalyticsService1.xsd" MetadataType="Schema" ID="4ea7ba4c-9228-4568-8543-7d96dea88234" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AnalyticsService2.xsd" MetadataType="Schema" ID="60b31db3-01e7-452f-96dc-d848d6f56063" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AnalyticsService.wsdl" MetadataType="Wsdl" ID="da953aba-daf5-4cff-a7a2-897e55c8d3cc" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="AnalyticsService.disco" MetadataType="Disco" ID="6b25650a-9a9e-447e-bd1b-b1ff1eec8a51" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?disco" />
+    <MetadataFile FileName="AnalyticsService1.wsdl" MetadataType="Wsdl" ID="fb4cca88-66a4-4359-93e4-2e9efc05d087" SourceId="1" SourceUrl="http://localhost:2002/Analytics/AnalyticsService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

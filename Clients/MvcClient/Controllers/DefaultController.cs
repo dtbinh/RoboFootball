@@ -13,8 +13,10 @@ namespace MvcClient.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "some test message";
-
+            using (var client = new AnalyticsSvc.AnalyticsClient())
+            {
+                ViewBag.Message = client.GetData(10);
+            }
             return View();
         }
 
