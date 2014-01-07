@@ -67,5 +67,8 @@ namespace Configuration.DataContracts
         [DataMember]
         public Color Marker { get; set; }
 
+        [DataMember]
+        public byte MachineId { get; set; }
+
     }
 }
