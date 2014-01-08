@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Logger.Contracts
+namespace Logger.DataContracts
 {
     [DataContract]
     [KnownType(typeof(PlayerLog))]
