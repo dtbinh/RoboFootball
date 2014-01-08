@@ -8,6 +8,7 @@ namespace Logger.Contracts
 {
     [DataContract]
     [KnownType(typeof(PlayerLog))]
+    [KnownType(typeof(ControllCenterLog))]
     public class GameLog
     {
         protected DateTime timeStamp;
@@ -17,7 +18,7 @@ namespace Logger.Contracts
         [DataMember]
         public string log;
         
-        public override string ToLog(string delimiter)
+        public virtual string ToLog(string delimiter)
         {
                 var sb = new StringBuilder();
                 sb.Append(timeStamp);
@@ -26,7 +27,6 @@ namespace Logger.Contracts
                 return sb.ToString();
         }
     }
-
 
     [DataContract]
     public class PlayerLog : GameLog
@@ -65,7 +65,6 @@ namespace Logger.Contracts
             return sb.ToString();
         }
     }
-
 
     [DataContract]
     public class ControllCenterLog : GameLog

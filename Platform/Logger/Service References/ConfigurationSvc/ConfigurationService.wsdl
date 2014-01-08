@@ -68,6 +68,18 @@
   <wsdl:message name="IMembershipSetup_UnRegisterRobot_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnRegisterRobotResponse" />
   </wsdl:message>
+  <wsdl:message name="IRuleManager_SetGameRules_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameRules" />
+  </wsdl:message>
+  <wsdl:message name="IRuleManager_SetGameRules_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameRulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleManager_GetGameRules_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameRules" />
+  </wsdl:message>
+  <wsdl:message name="IRuleManager_GetGameRules_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameRulesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGeometryManager">
     <wsdl:operation name="SetGameGeometry">
       <wsdl:input wsaw:Action="http://tempuri.org/IGeometryManager/SetGameGeometry" message="tns:IGeometryManager_SetGameGeometry_InputMessage" />
@@ -114,6 +126,16 @@
     <wsdl:operation name="UnRegisterRobot">
       <wsdl:input wsaw:Action="http://tempuri.org/IMembershipSetup/UnRegisterRobot" message="tns:IMembershipSetup_UnRegisterRobot_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMembershipSetup/UnRegisterRobotResponse" message="tns:IMembershipSetup_UnRegisterRobot_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRuleManager">
+    <wsdl:operation name="SetGameRules">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleManager/SetGameRules" message="tns:IRuleManager_SetGameRules_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleManager/SetGameRulesResponse" message="tns:IRuleManager_SetGameRules_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameRules">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleManager/GetGameRules" message="tns:IRuleManager_GetGameRules_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleManager/GetGameRulesResponse" message="tns:IRuleManager_GetGameRules_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGeometryManager" type="tns:IGeometryManager">
@@ -218,6 +240,27 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IRuleManager" type="tns:IRuleManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetGameRules">
+      <soap:operation soapAction="http://tempuri.org/IRuleManager/SetGameRules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameRules">
+      <soap:operation soapAction="http://tempuri.org/IRuleManager/GetGameRules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ConfigurationService">
     <wsdl:port name="BasicHttpBinding_IGeometryManager" binding="tns:BasicHttpBinding_IGeometryManager">
       <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
@@ -229,6 +272,9 @@
       <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IMembershipSetup" binding="tns:BasicHttpBinding_IMembershipSetup">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IRuleManager" binding="tns:BasicHttpBinding_IRuleManager">
       <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
     </wsdl:port>
   </wsdl:service>

@@ -678,6 +678,35 @@ namespace Logger.ConfigurationSvc {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameRules", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class GameRules : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.IGeometryManager")]
     public interface IGeometryManager {
@@ -947,6 +976,67 @@ namespace Logger.ConfigurationSvc {
         
         public System.Threading.Tasks.Task UnRegisterRobotAsync(byte PlayerId, byte TeamId) {
             return base.Channel.UnRegisterRobotAsync(PlayerId, TeamId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.IRuleManager")]
+    public interface IRuleManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRuleManager/SetGameRules", ReplyAction="http://tempuri.org/IRuleManager/SetGameRulesResponse")]
+        void SetGameRules(Logger.ConfigurationSvc.GameRules rules);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRuleManager/SetGameRules", ReplyAction="http://tempuri.org/IRuleManager/SetGameRulesResponse")]
+        System.Threading.Tasks.Task SetGameRulesAsync(Logger.ConfigurationSvc.GameRules rules);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRuleManager/GetGameRules", ReplyAction="http://tempuri.org/IRuleManager/GetGameRulesResponse")]
+        Logger.ConfigurationSvc.GameRules GetGameRules();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRuleManager/GetGameRules", ReplyAction="http://tempuri.org/IRuleManager/GetGameRulesResponse")]
+        System.Threading.Tasks.Task<Logger.ConfigurationSvc.GameRules> GetGameRulesAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRuleManagerChannel : Logger.ConfigurationSvc.IRuleManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RuleManagerClient : System.ServiceModel.ClientBase<Logger.ConfigurationSvc.IRuleManager>, Logger.ConfigurationSvc.IRuleManager {
+        
+        public RuleManagerClient() {
+        }
+        
+        public RuleManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RuleManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RuleManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RuleManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void SetGameRules(Logger.ConfigurationSvc.GameRules rules) {
+            base.Channel.SetGameRules(rules);
+        }
+        
+        public System.Threading.Tasks.Task SetGameRulesAsync(Logger.ConfigurationSvc.GameRules rules) {
+            return base.Channel.SetGameRulesAsync(rules);
+        }
+        
+        public Logger.ConfigurationSvc.GameRules GetGameRules() {
+            return base.Channel.GetGameRules();
+        }
+        
+        public System.Threading.Tasks.Task<Logger.ConfigurationSvc.GameRules> GetGameRulesAsync() {
+            return base.Channel.GetGameRulesAsync();
         }
     }
 }

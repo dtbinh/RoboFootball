@@ -87,4 +87,8 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlayerData" nillable="true" type="tns:ArrayOfPlayerData" />
+  <xs:complexType name="GameRules">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GameRules" nillable="true" type="tns:GameRules" />
 </xs:schema>

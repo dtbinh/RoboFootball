@@ -132,4 +132,28 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="SetGameRules">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="rules" nillable="true" type="q10:GameRules" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameRulesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameRules">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameRulesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetGameRulesResult" nillable="true" type="q11:GameRules" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
