@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Deploy.ServiceContracts
 {
+    [ServiceContract]
     public interface IDeployManager
     {
         // client module calls deploy and create request to it
@@ -25,6 +26,7 @@ namespace Deploy.ServiceContracts
         void UnDeploy(CancelDeployRequest request);
     }
 
+    [ServiceContract]
     public interface ITeamUndeploy
     {
         [OperationContract]
