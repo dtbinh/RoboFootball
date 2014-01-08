@@ -67,7 +67,8 @@
     <Compile Include="AnalyticsService.svc.cs">
       <DependentUpon>AnalyticsService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IAnalytics.cs" />
+    <Compile Include="Contracts\AnalyticsData.cs" />
+    <Compile Include="Contracts\DeployManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
