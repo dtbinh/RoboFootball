@@ -66,13 +66,10 @@
     <Compile Include="ArbiterService.svc.cs">
       <DependentUpon>ArbiterService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IArbiter.cs" />
     <Compile Include="Contracts\IGameManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
