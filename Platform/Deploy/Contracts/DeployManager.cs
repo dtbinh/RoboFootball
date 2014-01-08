@@ -1,4 +1,4 @@
-﻿using Deploy.MessageContracts;
+﻿using Deploy.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Web;
 
 namespace Deploy.ServiceContracts
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
-    public interface IPlayerDeploy
+    public interface IDeployManager
     {
         // client module calls deploy and create request to it
         //one file-one robot- one session
@@ -17,7 +16,7 @@ namespace Deploy.ServiceContracts
         //help of lejos scripts
   
         [OperationContract]
-        void DeployPlayer(PlayerDeployInfo request);
+        void DeployPlayer(DeployInfo request);
 
         [OperationContract]
         void CancelDeploy(CancelDeployRequest request);
@@ -26,10 +25,9 @@ namespace Deploy.ServiceContracts
         void UnDeploy(CancelDeployRequest request);
     }
 
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public interface ITeamUndeploy
     {
         [OperationContract]
-        void UndeployTeam(UnDeployTeamRequest request);
+        void UndeployTeam(TeamUnDeployRequest request);
     }
 }
