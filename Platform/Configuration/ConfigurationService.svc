@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Configuration.Service1" CodeBehind="ConfigurationService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Configuration.ConfigurationService" CodeBehind="ConfigurationService.svc.cs" %>

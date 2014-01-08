@@ -70,7 +70,6 @@
     <Compile Include="Contracts\Game.cs" />
     <Compile Include="Contracts\MembershipManager.cs" />
     <Compile Include="Contracts\Membership.cs" />
-    <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

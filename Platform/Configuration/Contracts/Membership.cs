@@ -34,38 +34,56 @@ namespace Configuration.DataContracts
         public IList<PlayerData> Players { get; set; }
 
         [DataMember]
+        public int ControlCenterCount { get { return ControlCenters.Count; } }
+
+        [DataMember]
+        public IList<ControllCenterData> ControlCenters { get; set; }
+
+        [DataMember]
         public byte GateId { get; set; }
     }
 
     [DataContract]
-    public class PlayerData
+    [KnownType(typeof(PlayerData))]
+    [KnownType(typeof(ControllCenterData))]
+    public abstract class UnitData
     {
         [DataMember]
-        public string PlayerName { get; set; }
-
-        [DataMember]
-        public byte PlayerId { get; set; }
+        public byte Id { get; set; }
 
         [DataMember]
         public byte TeamId { get; set; }
-      
-        [DataMember]
-        public int PlayerWidth { get; set; }
+    }
 
-        [DataMember]
-        public int PlayerLength { get; set; }
+    [DataContract]
+    public class ControllCenterData:UnitData
+    {
 
-        [DataMember]
-        public int PlayerMarkerPositionX { get; set; }
+    }
 
+    [DataContract]
+    public class PlayerData:UnitData
+    {
         [DataMember]
-        public int PlayerMarkerPositionY { get; set; }
-
-        [DataMember]
-        public Color Marker { get; set; }
+        public string Name { get; set; }
 
         [DataMember]
         public byte MachineId { get; set; }
+
+        [DataMember]
+        public int Width { get; set; }
+
+        [DataMember]
+        public int Length { get; set; }
+
+        [DataMember]
+        public int MarkerPositionX { get; set; }
+
+        [DataMember]
+        public int MarkerPositionY { get; set; }
+
+        [DataMember]
+        public Color Marker { get; set; }
 
     }
 }
