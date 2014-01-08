@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConfigurationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" />
+      <xsd:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGeometryManager_SetGameGeometry_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameGeometry" />
+  </wsdl:message>
+  <wsdl:message name="IGeometryManager_SetGameGeometry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameGeometryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGeometryManager_GetGameGeometry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameGeometry" />
+  </wsdl:message>
+  <wsdl:message name="IGeometryManager_GetGameGeometry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameGeometryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITimingManager_SetGameTimings_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameTimings" />
+  </wsdl:message>
+  <wsdl:message name="ITimingManager_SetGameTimings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameTimingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITimingManager_GetGameTimings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameTimings" />
+  </wsdl:message>
+  <wsdl:message name="ITimingManager_GetGameTimings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameTimingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetMembership_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembership" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetMembership_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembershipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeam" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetPalyer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPalyer" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipManager_GetPalyer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPalyerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_RegisterTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterTeam" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_RegisterTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_RegisterRobot_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterRobot" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_RegisterRobot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterRobotResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_UnRegisterRobot_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnRegisterRobot" />
+  </wsdl:message>
+  <wsdl:message name="IMembershipSetup_UnRegisterRobot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnRegisterRobotResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGeometryManager">
+    <wsdl:operation name="SetGameGeometry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeometryManager/SetGameGeometry" message="tns:IGeometryManager_SetGameGeometry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeometryManager/SetGameGeometryResponse" message="tns:IGeometryManager_SetGameGeometry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameGeometry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGeometryManager/GetGameGeometry" message="tns:IGeometryManager_GetGameGeometry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGeometryManager/GetGameGeometryResponse" message="tns:IGeometryManager_GetGameGeometry_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ITimingManager">
+    <wsdl:operation name="SetGameTimings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITimingManager/SetGameTimings" message="tns:ITimingManager_SetGameTimings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITimingManager/SetGameTimingsResponse" message="tns:ITimingManager_SetGameTimings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameTimings">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITimingManager/GetGameTimings" message="tns:ITimingManager_GetGameTimings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITimingManager/GetGameTimingsResponse" message="tns:ITimingManager_GetGameTimings_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMembershipManager">
+    <wsdl:operation name="GetMembership">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipManager/GetMembership" message="tns:IMembershipManager_GetMembership_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipManager/GetMembershipResponse" message="tns:IMembershipManager_GetMembership_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipManager/GetTeam" message="tns:IMembershipManager_GetTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipManager/GetTeamResponse" message="tns:IMembershipManager_GetTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPalyer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipManager/GetPalyer" message="tns:IMembershipManager_GetPalyer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipManager/GetPalyerResponse" message="tns:IMembershipManager_GetPalyer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMembershipSetup">
+    <wsdl:operation name="RegisterTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipSetup/RegisterTeam" message="tns:IMembershipSetup_RegisterTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipSetup/RegisterTeamResponse" message="tns:IMembershipSetup_RegisterTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRobot">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipSetup/RegisterRobot" message="tns:IMembershipSetup_RegisterRobot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipSetup/RegisterRobotResponse" message="tns:IMembershipSetup_RegisterRobot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnRegisterRobot">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMembershipSetup/UnRegisterRobot" message="tns:IMembershipSetup_UnRegisterRobot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMembershipSetup/UnRegisterRobotResponse" message="tns:IMembershipSetup_UnRegisterRobot_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGeometryManager" type="tns:IGeometryManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetGameGeometry">
+      <soap:operation soapAction="http://tempuri.org/IGeometryManager/SetGameGeometry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameGeometry">
+      <soap:operation soapAction="http://tempuri.org/IGeometryManager/GetGameGeometry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ITimingManager" type="tns:ITimingManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetGameTimings">
+      <soap:operation soapAction="http://tempuri.org/ITimingManager/SetGameTimings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameTimings">
+      <soap:operation soapAction="http://tempuri.org/ITimingManager/GetGameTimings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IMembershipManager" type="tns:IMembershipManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMembership">
+      <soap:operation soapAction="http://tempuri.org/IMembershipManager/GetMembership" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeam">
+      <soap:operation soapAction="http://tempuri.org/IMembershipManager/GetTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPalyer">
+      <soap:operation soapAction="http://tempuri.org/IMembershipManager/GetPalyer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IMembershipSetup" type="tns:IMembershipSetup">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterTeam">
+      <soap:operation soapAction="http://tempuri.org/IMembershipSetup/RegisterTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRobot">
+      <soap:operation soapAction="http://tempuri.org/IMembershipSetup/RegisterRobot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnRegisterRobot">
+      <soap:operation soapAction="http://tempuri.org/IMembershipSetup/UnRegisterRobot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConfigurationService">
+    <wsdl:port name="BasicHttpBinding_IGeometryManager" binding="tns:BasicHttpBinding_IGeometryManager">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ITimingManager" binding="tns:BasicHttpBinding_ITimingManager">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IMembershipManager" binding="tns:BasicHttpBinding_IMembershipManager">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IMembershipSetup" binding="tns:BasicHttpBinding_IMembershipSetup">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

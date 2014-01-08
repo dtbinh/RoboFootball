@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" />
+  <xs:element name="SetGameGeometry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="geometry" nillable="true" type="q1:GameGeometry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameGeometryResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameGeometry">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameGeometryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetGameGeometryResult" nillable="true" type="q2:GameGeometry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameTimings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="timings" nillable="true" type="q3:GameTimings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameTimingsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameTimings">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameTimingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetGameTimingsResult" nillable="true" type="q4:GameTimings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMembership">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMembershipResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetMembershipResult" nillable="true" type="q5:GameMembership" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTeamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetTeamResult" nillable="true" type="q6:TeamMembership" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPalyer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlayerId" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPalyerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="GetPalyerResult" nillable="true" type="q7:PlayerData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterTeam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterTeamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="RegisterTeamResult" nillable="true" type="q8:TeamMembership" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterRobot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlayerId" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterRobotResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="RegisterRobotResult" nillable="true" type="q9:PlayerData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnRegisterRobot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PlayerId" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnRegisterRobotResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
