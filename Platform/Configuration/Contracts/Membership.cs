@@ -7,9 +7,6 @@ using System.Text;
 
 namespace Configuration.DataContracts
 {
- 
-
-
     [DataContract]
     public class GameMembership
     {

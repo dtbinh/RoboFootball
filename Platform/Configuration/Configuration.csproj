@@ -66,16 +66,14 @@
     <Compile Include="ConfigurationService.svc.cs">
       <DependentUpon>ConfigurationService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Contracts\IGameSetup.cs" />
+    <Compile Include="Contracts\GameManeger.cs" />
     <Compile Include="Contracts\Game.cs" />
-    <Compile Include="Contracts\IMembershipSetup.cs" />
-    <Compile Include="Contracts\Members.cs" />
+    <Compile Include="Contracts\MembershipManager.cs" />
+    <Compile Include="Contracts\Membership.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

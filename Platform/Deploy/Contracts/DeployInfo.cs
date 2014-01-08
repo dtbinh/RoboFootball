@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Web;
 
-namespace Deploy.MessageContracts
+namespace Deploy.DataContracts
 {
     [DataContract]
-    public class PlayerDeployInfo : IDisposable
+    public class DeployInfo : IDisposable
     {
         [DataMember]
         public string FileName;
@@ -48,7 +48,7 @@ namespace Deploy.MessageContracts
     }
 
     [DataContract]
-    public class UnDeployTeamRequest
+    public class TeamUnDeployRequest
     {
         [DataMember]
         public byte TeamId;

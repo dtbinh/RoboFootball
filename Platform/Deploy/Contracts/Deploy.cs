@@ -5,7 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 
-namespace Deploy.Contracts
+namespace Deploy.ServiceContracts
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public interface IPlayerDeploy

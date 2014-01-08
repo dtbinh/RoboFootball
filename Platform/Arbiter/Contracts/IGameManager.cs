@@ -7,6 +7,6 @@ namespace Arbiter.ServiceContracts
     public interface IGameManager
     {
         [OperationContract]
-        void TeamReady(int TemaId);
+        void TeamReady(byte TemaId);
     }
 }
