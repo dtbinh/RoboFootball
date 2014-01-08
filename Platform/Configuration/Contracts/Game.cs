@@ -9,6 +9,12 @@ namespace Configuration.DataContracts
 {
 
     [DataContract]
+    public class GameRules
+    {
+    }
+
+
+    [DataContract]
     public class GameGeometry
     {
         [DataMember]

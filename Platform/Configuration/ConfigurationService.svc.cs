@@ -10,7 +10,7 @@ using System.Text;
 namespace Configuration
 {
     //TODO:Separate this service for 3 service: geometry tinimg and membership!
-    public class ConfigurationService : IGeometryManager, ITimingManager,IMembershipManager,IMembershipSetup
+    public class ConfigurationService : IGeometryManager, ITimingManager,IMembershipManager,IMembershipSetup,IRuleManager
     {
         public void SetGameGeometry(DataContracts.GameGeometry geometry)
         {
@@ -58,6 +58,16 @@ namespace Configuration
         }
 
         public void UnRegisterRobot(byte PlayerId, byte TeamId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetGameRules(DataContracts.GameRules rules)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataContracts.GameRules GetGameRules()
         {
             throw new NotImplementedException();
         }

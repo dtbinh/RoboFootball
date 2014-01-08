@@ -6,6 +6,17 @@ using System.ServiceModel;
 namespace Configuration.ServiceContracts
 {
     [ServiceContract]
+    public interface IRuleManager
+    {
+        [OperationContract]
+        void SetGameRules(GameRules rules);
+
+        [OperationContract]
+        GameRules GetGameRules();
+    }
+
+
+    [ServiceContract]
     public interface IGeometryManager
     {
         [OperationContract]
