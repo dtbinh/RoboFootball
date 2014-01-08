@@ -59,26 +59,65 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.disco" />
+    <None Include="Service References\ConfigurationSvc\configuration91.svcinfo" />
+    <None Include="Service References\ConfigurationSvc\configuration.svcinfo" />
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.GameGeometry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.GameMembership.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.GameTimings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.PlayerData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.TeamMembership.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ConfigurationSvc\Observer.ConfigurationSvc.GameRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ConfigurationSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ObserverService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Contracts\Observer.cs" />
+    <Compile Include="Contracts\PhysicInfo.cs" />
+    <Compile Include="Service References\ConfigurationSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="ObserverService.svc.cs">
+      <DependentUpon>ObserverService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.wsdl" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService1.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService2.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService3.xsd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

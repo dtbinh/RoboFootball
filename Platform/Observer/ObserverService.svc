@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Observer.ObserverService" CodeBehind="ObserverService.svc.cs" %>

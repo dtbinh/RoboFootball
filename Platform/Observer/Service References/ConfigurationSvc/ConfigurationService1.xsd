@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:complexType name="GameGeometry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BallRadius" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldRadius" type="xs:int" />
+      <xs:element minOccurs="0" name="GateWidth" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameGeometry" nillable="true" type="tns:GameGeometry" />
+  <xs:complexType name="GameTimings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeforeStartTimeoutLength" type="xs:int" />
+      <xs:element minOccurs="0" name="GameStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TimeCount" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeLengthSec" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeOutLengthSec" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameTimings" nillable="true" type="tns:GameTimings" />
+  <xs:complexType name="GameMembership">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TeamCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Teams" nillable="true" type="tns:ArrayOfTeamMembership" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameMembership" nillable="true" type="tns:GameMembership" />
+  <xs:complexType name="ArrayOfTeamMembership">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TeamMembership" nillable="true" type="tns:TeamMembership" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeamMembership" nillable="true" type="tns:ArrayOfTeamMembership" />
+  <xs:complexType name="TeamMembership">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ControlCenterCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ControlCenters" nillable="true" type="tns:ArrayOfControllCenterData" />
+      <xs:element minOccurs="0" name="GateId" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="PlayerCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfPlayerData" />
+      <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="TeamName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TeamMembership" nillable="true" type="tns:TeamMembership" />
+  <xs:complexType name="ArrayOfControllCenterData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ControllCenterData" nillable="true" type="tns:ControllCenterData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfControllCenterData" nillable="true" type="tns:ArrayOfControllCenterData" />
+  <xs:complexType name="ControllCenterData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UnitData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ControllCenterData" nillable="true" type="tns:ControllCenterData" />
+  <xs:complexType name="UnitData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnitData" nillable="true" type="tns:UnitData" />
+  <xs:complexType name="PlayerData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UnitData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Length" type="xs:int" />
+          <xs:element minOccurs="0" name="MachineId" type="xs:unsignedByte" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="Marker" type="q1:Color" />
+          <xs:element minOccurs="0" name="MarkerPositionX" type="xs:int" />
+          <xs:element minOccurs="0" name="MarkerPositionY" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Width" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlayerData" nillable="true" type="tns:PlayerData" />
+  <xs:complexType name="ArrayOfPlayerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerData" nillable="true" type="tns:PlayerData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerData" nillable="true" type="tns:ArrayOfPlayerData" />
+  <xs:complexType name="GameRules">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GameRules" nillable="true" type="tns:GameRules" />
+</xs:schema>
