@@ -9,14 +9,14 @@ using System.Text;
 
 namespace Arbiter
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ArbiterService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ArbiterService.svc or ArbiterService.svc.cs at the Solution Explorer and start debugging.
-    public class ArbiterService : IGameManager
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    public class ArbiterService
     {
-
-        public void TeamReady(byte TemaId)
+        private void CheckIfCouldStart()
         {
-            throw new NotImplementedException();
+            using(var manager= new ConfigurationSvc.MembershipManagerClient)
+            {
+            }
         }
     }
 }
