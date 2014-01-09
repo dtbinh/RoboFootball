@@ -10,7 +10,7 @@ using System.Text;
 namespace Configuration
 {
     //TODO:Separate this service for 3 service: geometry tinimg and membership!
-    public class ConfigurationService :IConfigurationManager, IGeometryManager, ITimingManager,IMembershipManager,IMembershipSetup,IRuleManager
+    public class ConfigurationService : INotificationManager, IGeometryManager, ITimingManager, IMembershipManager, IMembershipSetup, IRuleManager
     {
         public void SetGameGeometry(DataContracts.GameGeometry geometry)
         {
@@ -72,9 +72,16 @@ namespace Configuration
             throw new NotImplementedException();
         }
 
-        public bool COnfigurationIsReady()
+        public void ConfirmTeam(byte TeamId)
         {
             throw new NotImplementedException();
+        }
+
+        public void ConfigurationIsReady()
+        {
+            var Callback = OperationContext.Current.GetCallbackChannel<INotificationCallBack>();
+
+            Callback.OnConfigurationIsReady();
         }
     }
 }

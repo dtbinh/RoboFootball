@@ -5,12 +5,19 @@ using System.ServiceModel;
 
 namespace Configuration.ServiceContracts
 {
-    [ServiceContract]
-    public interface IConfigurationManager
+    [ServiceContract(CallbackContract = typeof(INotificationCallBack))]
+    public interface INotificationManager
     {
-        [OperationContract]
-        bool ConfigurationIsReady();
+        // true when all teams are commited and time of testing ended
+        void ConfigurationIsReady();
     }
+
+    public interface INotificationCallBack
+    {
+        [OperationContract(IsOneWay = true)]
+        void OnConfigurationIsReady();
+    }
+
 
     [ServiceContract]
     public interface IRuleManager
