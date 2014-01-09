@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a05d0c8b-ba46-4af2-8ec1-8970b742abfb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2002/Configuration/ConfigurationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ConfigurationService1.wsdl" MetadataType="Wsdl" ID="9ebd9193-6f1e-4abb-a5a9-d3ec37defaac" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?wsdl" />
+    <MetadataFile FileName="ConfigurationService4.xsd" MetadataType="Schema" ID="7e782d2f-a623-48cb-8ca1-e3b777d3ea1f" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ConfigurationService41.xsd" MetadataType="Schema" ID="b3ccb584-46e2-4dce-9261-09ca414d56cd" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConfigurationService42.xsd" MetadataType="Schema" ID="1fcc0f6f-ac5f-4a6a-b818-0e4232d7d802" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConfigurationService43.xsd" MetadataType="Schema" ID="644fadc5-cd73-4231-95e9-6b52269645c6" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ConfigurationService1.disco" MetadataType="Disco" ID="f70b595b-7c43-457a-83c4-dd5f5a9c8252" SourceId="1" SourceUrl="http://master-pc:2002/Configuration/ConfigurationService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
