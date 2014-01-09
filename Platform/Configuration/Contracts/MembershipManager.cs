@@ -9,6 +9,12 @@ namespace Configuration.ServiceContracts
   * all configuration data should be kept in DB
   * We will use local db thru Linq to sql
   */
+
+    /*
+     * User could add or delete data for team but if will be hit team confirm all data will be kept to db
+     * And user could not change this data until game ends
+     * 
+     */
     [ServiceContract]
     public interface IMembershipSetup
     {
@@ -28,6 +34,11 @@ namespace Configuration.ServiceContracts
         
         [OperationContract]
         void UnRegisterRobot(byte PlayerId, byte TeamId);
+
+        //Commits all changes with team.
+        //After this team will be ready for game.
+        [OperationContract]
+        void ConfirmTeam(byte TeamId);
     }
 
 
