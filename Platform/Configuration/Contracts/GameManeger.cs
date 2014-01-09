@@ -6,6 +6,13 @@ using System.ServiceModel;
 namespace Configuration.ServiceContracts
 {
     [ServiceContract]
+    public interface IConfigurationManager
+    {
+        [OperationContract]
+        bool ConfigurationIsReady();
+    }
+
+    [ServiceContract]
     public interface IRuleManager
     {
         [OperationContract]
