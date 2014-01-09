@@ -708,6 +708,53 @@ namespace Logger.ConfigurationSvc {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.IConfigurationManager")]
+    public interface IConfigurationManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReady", ReplyAction="http://tempuri.org/IConfigurationManager/COnfigurationIsReadyResponse")]
+        bool COnfigurationIsReady();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReady", ReplyAction="http://tempuri.org/IConfigurationManager/COnfigurationIsReadyResponse")]
+        System.Threading.Tasks.Task<bool> COnfigurationIsReadyAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IConfigurationManagerChannel : Logger.ConfigurationSvc.IConfigurationManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConfigurationManagerClient : System.ServiceModel.ClientBase<Logger.ConfigurationSvc.IConfigurationManager>, Logger.ConfigurationSvc.IConfigurationManager {
+        
+        public ConfigurationManagerClient() {
+        }
+        
+        public ConfigurationManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ConfigurationManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConfigurationManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConfigurationManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool COnfigurationIsReady() {
+            return base.Channel.COnfigurationIsReady();
+        }
+        
+        public System.Threading.Tasks.Task<bool> COnfigurationIsReadyAsync() {
+            return base.Channel.COnfigurationIsReadyAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.IGeometryManager")]
     public interface IGeometryManager {
         

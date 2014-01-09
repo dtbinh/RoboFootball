@@ -8,6 +8,12 @@
       <xsd:import schemaLocation="http://localhost:2002/Configuration/ConfigurationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IConfigurationManager_COnfigurationIsReady_InputMessage">
+    <wsdl:part name="parameters" element="tns:COnfigurationIsReady" />
+  </wsdl:message>
+  <wsdl:message name="IConfigurationManager_COnfigurationIsReady_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COnfigurationIsReadyResponse" />
+  </wsdl:message>
   <wsdl:message name="IGeometryManager_SetGameGeometry_InputMessage">
     <wsdl:part name="parameters" element="tns:SetGameGeometry" />
   </wsdl:message>
@@ -80,6 +86,12 @@
   <wsdl:message name="IRuleManager_GetGameRules_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGameRulesResponse" />
   </wsdl:message>
+  <wsdl:portType name="IConfigurationManager">
+    <wsdl:operation name="COnfigurationIsReady">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReady" message="tns:IConfigurationManager_COnfigurationIsReady_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReadyResponse" message="tns:IConfigurationManager_COnfigurationIsReady_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IGeometryManager">
     <wsdl:operation name="SetGameGeometry">
       <wsdl:input wsaw:Action="http://tempuri.org/IGeometryManager/SetGameGeometry" message="tns:IGeometryManager_SetGameGeometry_InputMessage" />
@@ -138,6 +150,18 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IRuleManager/GetGameRulesResponse" message="tns:IRuleManager_GetGameRules_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IConfigurationManager" type="tns:IConfigurationManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="COnfigurationIsReady">
+      <soap:operation soapAction="http://tempuri.org/IConfigurationManager/COnfigurationIsReady" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IGeometryManager" type="tns:IGeometryManager">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SetGameGeometry">
@@ -262,6 +286,9 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ConfigurationService">
+    <wsdl:port name="BasicHttpBinding_IConfigurationManager" binding="tns:BasicHttpBinding_IConfigurationManager">
+      <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
+    </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IGeometryManager" binding="tns:BasicHttpBinding_IGeometryManager">
       <soap:address location="http://localhost:2002/Configuration/ConfigurationService.svc" />
     </wsdl:port>
