@@ -78,18 +78,13 @@
     <Content Include="Service References\ConfigurationSvc\Arbiter.ConfigurationSvc.TeamMembership.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.disco" />
     <None Include="Service References\ConfigurationSvc\configuration91.svcinfo" />
     <None Include="Service References\ConfigurationSvc\configuration.svcinfo" />
-    <Content Include="Service References\ConfigurationSvc\ConfigurationService1.wsdl" />
-    <None Include="Service References\ConfigurationSvc\ConfigurationService4.xsd" />
-    <None Include="Service References\ConfigurationSvc\ConfigurationService41.xsd" />
-    <None Include="Service References\ConfigurationSvc\ConfigurationService42.xsd" />
-    <None Include="Service References\ConfigurationSvc\ConfigurationService43.xsd" />
     <None Include="Service References\ConfigurationSvc\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\ConfigurationSvc\ConfigurationService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +102,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.wsdl" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService1.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService2.xsd" />
+    <None Include="Service References\ConfigurationSvc\ConfigurationService3.xsd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -115,10 +115,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

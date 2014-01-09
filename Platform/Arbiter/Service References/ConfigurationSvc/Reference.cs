@@ -421,7 +421,7 @@ namespace Arbiter.ConfigurationSvc {
         private byte MachineIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Drawing.Color MarkerField;
+        private Arbiter.ConfigurationSvc.Color MarkerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MarkerPositionXField;
@@ -462,7 +462,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Drawing.Color Marker {
+        public Arbiter.ConfigurationSvc.Color Marker {
             get {
                 return this.MarkerField;
             }
@@ -592,6 +592,94 @@ namespace Arbiter.ConfigurationSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
+    [System.SerializableAttribute()]
+    public partial struct Color : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private short knownColorField;
+        
+        private string nameField;
+        
+        private short stateField;
+        
+        private long valueField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public short knownColor {
+            get {
+                return this.knownColorField;
+            }
+            set {
+                if ((this.knownColorField.Equals(value) != true)) {
+                    this.knownColorField = value;
+                    this.RaisePropertyChanged("knownColor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public short state {
+            get {
+                return this.stateField;
+            }
+            set {
+                if ((this.stateField.Equals(value) != true)) {
+                    this.stateField = value;
+                    this.RaisePropertyChanged("state");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public long value {
+            get {
+                return this.valueField;
+            }
+            set {
+                if ((this.valueField.Equals(value) != true)) {
+                    this.valueField = value;
+                    this.RaisePropertyChanged("value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GameRules", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
     [System.SerializableAttribute()]
     public partial class GameRules : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -620,49 +708,43 @@ namespace Arbiter.ConfigurationSvc {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.IConfigurationManager")]
-    public interface IConfigurationManager {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReady", ReplyAction="http://tempuri.org/IConfigurationManager/COnfigurationIsReadyResponse")]
-        bool COnfigurationIsReady();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConfigurationManager/COnfigurationIsReady", ReplyAction="http://tempuri.org/IConfigurationManager/COnfigurationIsReadyResponse")]
-        System.Threading.Tasks.Task<bool> COnfigurationIsReadyAsync();
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigurationSvc.INotificationManager", CallbackContract=typeof(Arbiter.ConfigurationSvc.INotificationManagerCallback))]
+    public interface INotificationManager {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConfigurationManagerChannel : Arbiter.ConfigurationSvc.IConfigurationManager, System.ServiceModel.IClientChannel {
+    public interface INotificationManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotificationManager/OnConfigurationIsReady")]
+        void OnConfigurationIsReady();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INotificationManagerChannel : Arbiter.ConfigurationSvc.INotificationManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConfigurationManagerClient : System.ServiceModel.ClientBase<Arbiter.ConfigurationSvc.IConfigurationManager>, Arbiter.ConfigurationSvc.IConfigurationManager {
+    public partial class NotificationManagerClient : System.ServiceModel.DuplexClientBase<Arbiter.ConfigurationSvc.INotificationManager>, Arbiter.ConfigurationSvc.INotificationManager {
         
-        public ConfigurationManagerClient() {
+        public NotificationManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ConfigurationManagerClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public NotificationManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ConfigurationManagerClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public NotificationManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ConfigurationManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public NotificationManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ConfigurationManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public bool COnfigurationIsReady() {
-            return base.Channel.COnfigurationIsReady();
-        }
-        
-        public System.Threading.Tasks.Task<bool> COnfigurationIsReadyAsync() {
-            return base.Channel.COnfigurationIsReadyAsync();
+        public NotificationManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
     }
     
@@ -884,6 +966,12 @@ namespace Arbiter.ConfigurationSvc {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipSetup/UnRegisterRobot", ReplyAction="http://tempuri.org/IMembershipSetup/UnRegisterRobotResponse")]
         System.Threading.Tasks.Task UnRegisterRobotAsync(byte PlayerId, byte TeamId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipSetup/ConfirmTeam", ReplyAction="http://tempuri.org/IMembershipSetup/ConfirmTeamResponse")]
+        void ConfirmTeam(byte TeamId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMembershipSetup/ConfirmTeam", ReplyAction="http://tempuri.org/IMembershipSetup/ConfirmTeamResponse")]
+        System.Threading.Tasks.Task ConfirmTeamAsync(byte TeamId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -935,6 +1023,14 @@ namespace Arbiter.ConfigurationSvc {
         
         public System.Threading.Tasks.Task UnRegisterRobotAsync(byte PlayerId, byte TeamId) {
             return base.Channel.UnRegisterRobotAsync(PlayerId, TeamId);
+        }
+        
+        public void ConfirmTeam(byte TeamId) {
+            base.Channel.ConfirmTeam(TeamId);
+        }
+        
+        public System.Threading.Tasks.Task ConfirmTeamAsync(byte TeamId) {
+            return base.Channel.ConfirmTeamAsync(TeamId);
         }
     }
     
