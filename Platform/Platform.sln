@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arbiter", "Arbiter\Arbiter.csproj", "{FC5FE206-5457-4F70-8099-50079CFB15A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{148E5FEB-4E18-415A-913C-C2344D2FF235} = {148E5FEB-4E18-415A-913C-C2344D2FF235}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deploy", "Deploy\Deploy.csproj", "{F7583052-2E5A-4128-8843-0E7883D797FD}"
 EndProject
