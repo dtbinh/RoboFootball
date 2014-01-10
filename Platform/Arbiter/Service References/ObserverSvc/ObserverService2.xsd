@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" />
+  <xs:import schemaLocation="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Observer.DataContracts" />
+  <xs:element name="GetPlayerPhysicInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="playerData" nillable="true" type="q1:PlayerData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayerPhysicInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Observer.DataContracts" minOccurs="0" name="GetPlayerPhysicInfoResult" nillable="true" type="q2:PhysicInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRobotsPhysicInfo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRobotsPhysicInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Observer.DataContracts" minOccurs="0" name="GetAllRobotsPhysicInfoResult" nillable="true" type="q3:PhysicInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBallPhysicInfo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBallPhysicInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Observer.DataContracts" minOccurs="0" name="GetBallPhysicInfoResult" nillable="true" type="q4:PhysicInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b2f97a15-c738-40ec-855a-15930513d725" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2002/Observer/ObserverService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ObserverService.disco" MetadataType="Disco" ID="ec453d86-e5b1-44fe-b585-83a8abcaddb8" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?disco" />
+    <MetadataFile FileName="ObserverService.xsd" MetadataType="Schema" ID="043092e4-e637-4557-8c8e-db7d7a04ad10" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ObserverService1.xsd" MetadataType="Schema" ID="866c9c8a-f44e-4bc5-b5ba-2b65ea93986b" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ObserverService2.xsd" MetadataType="Schema" ID="83b5ced3-4cfc-4675-bf31-e12cf1fbe296" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ObserverService3.xsd" MetadataType="Schema" ID="3becad8d-27d9-4d2b-876c-2597de83435f" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ObserverService.wsdl" MetadataType="Wsdl" ID="817a4088-6e01-4d08-9861-4241c98ffac8" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?wsdl" />
+    <MetadataFile FileName="ObserverService4.xsd" MetadataType="Schema" ID="99d88e1a-3da0-4390-907a-9c99e3fd6273" SourceId="1" SourceUrl="http://localhost:2002/Observer/ObserverService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -14,8 +14,8 @@
       <xs:element minOccurs="0" name="BeforeStartTimeoutLength" type="xs:int" />
       <xs:element minOccurs="0" name="GameStartDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TimeCount" type="xs:int" />
-      <xs:element minOccurs="0" name="TimeLengthSec" type="xs:int" />
-      <xs:element minOccurs="0" name="TimeOutLengthSec" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeLength" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeOutLength" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameTimings" nillable="true" type="tns:GameTimings" />

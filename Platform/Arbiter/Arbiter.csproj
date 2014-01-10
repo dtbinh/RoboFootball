@@ -85,6 +85,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\ObserverSvc\Arbiter.ObserverSvc.PhysicInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ObserverSvc\ObserverService.disco" />
+    <Content Include="Service References\ObserverSvc\configuration91.svcinfo" />
+    <Content Include="Service References\ObserverSvc\configuration.svcinfo" />
+    <Content Include="Service References\ObserverSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +107,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ObserverSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerSupervisor.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -107,6 +123,12 @@
     <None Include="Service References\ConfigurationSvc\ConfigurationService1.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService2.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService3.xsd" />
+    <Content Include="Service References\ObserverSvc\ObserverService.wsdl" />
+    <None Include="Service References\ObserverSvc\ObserverService.xsd" />
+    <None Include="Service References\ObserverSvc\ObserverService1.xsd" />
+    <None Include="Service References\ObserverSvc\ObserverService2.xsd" />
+    <None Include="Service References\ObserverSvc\ObserverService3.xsd" />
+    <None Include="Service References\ObserverSvc\ObserverService4.xsd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
+    <WCFMetadataStorage Include="Service References\ObserverSvc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

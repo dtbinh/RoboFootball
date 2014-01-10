@@ -109,10 +109,10 @@ namespace Arbiter.ConfigurationSvc {
         private int TimeCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimeLengthSecField;
+        private int TimeLengthField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimeOutLengthSecField;
+        private int TimeOutLengthField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -164,27 +164,27 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TimeLengthSec {
+        public int TimeLength {
             get {
-                return this.TimeLengthSecField;
+                return this.TimeLengthField;
             }
             set {
-                if ((this.TimeLengthSecField.Equals(value) != true)) {
-                    this.TimeLengthSecField = value;
-                    this.RaisePropertyChanged("TimeLengthSec");
+                if ((this.TimeLengthField.Equals(value) != true)) {
+                    this.TimeLengthField = value;
+                    this.RaisePropertyChanged("TimeLength");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TimeOutLengthSec {
+        public int TimeOutLength {
             get {
-                return this.TimeOutLengthSecField;
+                return this.TimeOutLengthField;
             }
             set {
-                if ((this.TimeOutLengthSecField.Equals(value) != true)) {
-                    this.TimeOutLengthSecField = value;
-                    this.RaisePropertyChanged("TimeOutLengthSec");
+                if ((this.TimeOutLengthField.Equals(value) != true)) {
+                    this.TimeOutLengthField = value;
+                    this.RaisePropertyChanged("TimeOutLength");
                 }
             }
         }
@@ -212,7 +212,7 @@ namespace Arbiter.ConfigurationSvc {
         private int TeamCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Arbiter.ConfigurationSvc.TeamMembership[] TeamsField;
+        private System.Collections.Generic.List<Arbiter.ConfigurationSvc.TeamMembership> TeamsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -238,7 +238,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Arbiter.ConfigurationSvc.TeamMembership[] Teams {
+        public System.Collections.Generic.List<Arbiter.ConfigurationSvc.TeamMembership> Teams {
             get {
                 return this.TeamsField;
             }
@@ -273,7 +273,7 @@ namespace Arbiter.ConfigurationSvc {
         private int ControlCenterCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Arbiter.ConfigurationSvc.ControllCenterData[] ControlCentersField;
+        private System.Collections.Generic.List<Arbiter.ConfigurationSvc.ControllCenterData> ControlCentersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte GateIdField;
@@ -282,7 +282,7 @@ namespace Arbiter.ConfigurationSvc {
         private int PlayerCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Arbiter.ConfigurationSvc.PlayerData[] PlayersField;
+        private System.Collections.Generic.List<Arbiter.ConfigurationSvc.PlayerData> PlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte TeamIdField;
@@ -314,7 +314,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Arbiter.ConfigurationSvc.ControllCenterData[] ControlCenters {
+        public System.Collections.Generic.List<Arbiter.ConfigurationSvc.ControllCenterData> ControlCenters {
             get {
                 return this.ControlCentersField;
             }
@@ -353,7 +353,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Arbiter.ConfigurationSvc.PlayerData[] Players {
+        public System.Collections.Generic.List<Arbiter.ConfigurationSvc.PlayerData> Players {
             get {
                 return this.PlayersField;
             }
