@@ -116,6 +116,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\LoggerSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -132,7 +137,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <None Include="Service References\LoggerSvc\LoggerService.disco" />
+    <None Include="Service References\LoggerSvc\configuration91.svcinfo" />
+    <None Include="Service References\LoggerSvc\configuration.svcinfo" />
+    <None Include="Service References\LoggerSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -141,6 +155,12 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Service References\AnalyticsSvc\AnalyticsService1.wsdl" />
+    <None Include="Service References\LoggerSvc\LoggerService.wsdl" />
+    <None Include="Service References\LoggerSvc\LoggerService.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService1.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService2.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService3.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService4.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -156,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AnalyticsSvc\" />
+    <WCFMetadataStorage Include="Service References\LoggerSvc\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service References\AnalyticsSvc\AnalyticsService.wsdl" />

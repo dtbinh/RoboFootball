@@ -20,16 +20,16 @@ namespace Arbiter
         {
             using (var timeManager = new ConfigurationSvc.TimingManagerClient())
             {
-                var timings= timeManager.GetGameTimings();
-                
+                var timings = timeManager.GetGameTimings();
+
                 StartGame(timings);
                 StartTime(timings);
-                
-                for (int i = 0; i < timings.TimeCount-1; i++)
+
+                for (int i = 0; i < timings.TimeCount - 1; i++)
                 {
                     EndTime(timings);
                     TimeOut(timings);
-                    StartTime(timings);
+                    StartTime(timings, i + 1);
                 }
                 EndTime(timings);
                 EndGame(timings);
@@ -38,33 +38,68 @@ namespace Arbiter
 
         private void StartGame(ConfigurationSvc.GameTimings timings)
         {
-            //notofocation to user
+            using (var status = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                status.ShowStatusMessage("The game has started initialization...");
 
-            var dateofstart = timings.GameStartDate;
-            double millisecondsToWait = (dateofstart - DateTime.Now).TotalMilliseconds;
-            if (millisecondsToWait < 0) throw new NotImplementedException("here should be called mvc client with message that the time has run out");
-            
-            Thread.Sleep((int)millisecondsToWait);
-            ActivateSupervisors();
+                var dateofstart = timings.GameStartDate;
+                double millisecondsToWait = (dateofstart - DateTime.Now).TotalMilliseconds;
+                if (millisecondsToWait < 0) throw new NotImplementedException("here should be called mvc client with message that the time has run out");
+
+                Thread.Sleep((int)millisecondsToWait);
+
+                status.ShowStatusMessage("The game has been started");
+
+                ActivateSupervisors();
+
+                status.ShowStatusMessage("SubArbiters has been activated");
+            }
+
             //notofocation to user
         }
 
         private void EndGame(ConfigurationSvc.GameTimings timings)
         {
-            //notofocation to user
-            DisactivatePlayers();
-            DisactivateSupervisors();
-            //notofocation to user
+            using (var status = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                status.ShowStatusMessage("Ending of the game");
+                DisactivatePlayers();
+                DisactivateSupervisors();
+                status.ShowStatusMessage("The game has been ended");
+            }
         }
 
-
-        private void StartTime(ConfigurationSvc.GameTimings timings)
+        private void StartTime(ConfigurationSvc.GameTimings timings, int number)
         {
-            //notofocation to user
-            var gameTime = timings.TimeLength;
-            Thread.Sleep(gameTime);
-            ActivatePlayers();
-            //notofocation to user
+            using (var status = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                status.ShowStatusMessage("Time " + number + " is starting");
+                var gameTime = timings.TimeLength;
+                Thread.Sleep(gameTime);
+                ActivatePlayers();
+                status.ShowStatusMessage("Players are activated");
+            }
+        }
+
+        private void EndTime(ConfigurationSvc.GameTimings timings, int number)
+        {
+            using (var status = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                status.ShowStatusMessage("Time " + number + "ended");
+                DisactivatePlayers();
+                status.ShowStatusMessage("Players are disactivated");
+            }
+        }
+
+        private void TimeOut(ConfigurationSvc.GameTimings timings)
+        {
+            using (var status = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                status.ShowStatusMessage("Time out started");
+                var pause = timings.TimeOutLength;
+                Thread.Sleep(pause);
+                status.ShowStatusMessage("Time out ended");
+            }
         }
 
         private void ActivatePlayers()
@@ -72,25 +107,11 @@ namespace Arbiter
             throw new NotImplementedException();
         }
 
-        private void EndTime(ConfigurationSvc.GameTimings timings)
-        {
-            //notofocation to user
-            DisactivatePlayers();
-            //notofocation to user
-        }
-
         private void DisactivatePlayers()
         {
             throw new NotImplementedException();
         }
 
-        private void TimeOut(ConfigurationSvc.GameTimings timings)
-        {
-            //notofocation to user
-            var pause = timings.TimeOutLength;
-            Thread.Sleep(pause);
-            //notofocation to user
-        }
 
         private void ActivateSupervisors()
         {
@@ -104,7 +125,7 @@ namespace Arbiter
             foreach (var t in supervisors.Select(supervisor => new Thread(supervisor.CheckRules)))
             {
                 t.Start();
-                //notofocation to user
+                //LoggerSvc.addLog
             }
         }
 
@@ -113,7 +134,7 @@ namespace Arbiter
             foreach (var s in supervisors)
             {
                 s.RequestStop();
-                //notofocation to user
+                //LoggerSvc.addLog
             }
         }
 

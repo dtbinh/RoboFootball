@@ -6,10 +6,18 @@ using System.Web.Mvc;
 
 namespace MvcClient.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller, LoggerSvc.IStatusMessageLoggerCallback
     {
         //
         // GET: /Default/
+
+        public HomeController()
+        {
+            using (var sml = new LoggerSvc.StatusMessageLoggerClient())
+            {
+                sml.SubscribeForStatusMessages();
+            }
+        }
 
         public ActionResult Index()
         {
@@ -20,5 +28,10 @@ namespace MvcClient.Controllers
             return View();
         }
 
+
+        public void OnShowStatusMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

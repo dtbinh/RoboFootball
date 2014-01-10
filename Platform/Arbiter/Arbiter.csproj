@@ -85,6 +85,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\LoggerSvc\LoggerService.disco" />
+    <Content Include="Service References\LoggerSvc\configuration91.svcinfo" />
+    <Content Include="Service References\LoggerSvc\configuration.svcinfo" />
+    <Content Include="Service References\LoggerSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Service References\ObserverSvc\Arbiter.ObserverSvc.PhysicInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -107,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\LoggerSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ObserverSvc\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +136,12 @@
     <None Include="Service References\ConfigurationSvc\ConfigurationService2.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService3.xsd" />
     <Content Include="Service References\ObserverSvc\ObserverService.wsdl" />
+    <Content Include="Service References\LoggerSvc\LoggerService.wsdl" />
+    <None Include="Service References\LoggerSvc\LoggerService.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService1.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService2.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService3.xsd" />
+    <None Include="Service References\LoggerSvc\LoggerService4.xsd" />
     <None Include="Service References\ObserverSvc\ObserverService.xsd" />
     <None Include="Service References\ObserverSvc\ObserverService1.xsd" />
     <None Include="Service References\ObserverSvc\ObserverService2.xsd" />
@@ -141,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
+    <WCFMetadataStorage Include="Service References\LoggerSvc\" />
     <WCFMetadataStorage Include="Service References\ObserverSvc\" />
   </ItemGroup>
   <PropertyGroup>

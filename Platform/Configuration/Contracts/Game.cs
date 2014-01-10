@@ -13,7 +13,6 @@ namespace Configuration.DataContracts
     {
     }
 
-
     [DataContract]
     public class GameGeometry
     {
