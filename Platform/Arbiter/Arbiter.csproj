@@ -108,6 +108,7 @@
     <Compile Include="ArbiterService.svc.cs">
       <DependentUpon>ArbiterService.svc</DependentUpon>
     </Compile>
+    <Compile Include="GameProcessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ConfigurationSvc\Reference.cs">
       <AutoGen>True</AutoGen>
