@@ -45,7 +45,7 @@ namespace Arbiter
             EndGame();
         }
 
-        private void StartGame()
+        public void StartGame()
         {
             statusClient.ShowStatusMessage("The game has started initialization...");
 
@@ -64,7 +64,7 @@ namespace Arbiter
             //notofocation to user
         }
 
-        private void EndGame()
+        public void EndGame()
         {
             statusClient.ShowStatusMessage("Ending of the game");
             DisactivatePlayers();
@@ -72,7 +72,7 @@ namespace Arbiter
             statusClient.ShowStatusMessage("The game has been ended");
         }
 
-        private void StartTime(int number)
+        public void StartTime(int number)
         {
             statusClient.ShowStatusMessage("Time " + number + " is starting");
             var gameTime = timingClient.GetGameTimings().TimeLength;
@@ -81,14 +81,14 @@ namespace Arbiter
             statusClient.ShowStatusMessage("Players are activated");
         }
 
-        private void EndTime(int number)
+        public void EndTime(int number)
         {
             statusClient.ShowStatusMessage("Time " + number + "ended");
             DisactivatePlayers();
             statusClient.ShowStatusMessage("Players are disactivated");
         }
 
-        private void TimeOut()
+        public void TimeOut()
         {
             statusClient.ShowStatusMessage("Time out started");
             var pause = timingClient.GetGameTimings().TimeOutLength;
@@ -96,19 +96,18 @@ namespace Arbiter
             statusClient.ShowStatusMessage("Time out ended");
         }
 
-        private void ActivatePlayers()
+        public void ActivatePlayers()
         {
             //Вот эти штуки надо имплементить через CommunicationService!
             //    Это будет такой сервис, который умеет посылать сообщения роботам и хранит список готовых сообщений
             throw new NotImplementedException();
         }
 
-        private void DisactivatePlayers()
+        public void DisactivatePlayers()
         {
-            throw new NotImplementedException();
         }
 
-        private void ActivateSupervisors()
+        public void ActivateSupervisors()
         {
             var mem = teamManagerClient.GetMembership();
             supervisors = mem.Teams.SelectMany(team => team.Players)
@@ -120,7 +119,7 @@ namespace Arbiter
             }
         }
 
-        private void DisactivateSupervisors()
+        public void DisactivateSupervisors()
         {
             foreach (var s in supervisors)
             {

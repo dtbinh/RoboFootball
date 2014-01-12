@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GameManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,14 +55,6 @@
     <ProjectReference Include="..\Arbiter\Arbiter.csproj">
       <Project>{fc5fe206-5457-4f70-8099-50079cfb15a1}</Project>
       <Name>Arbiter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Configuration\Configuration.csproj">
-      <Project>{69ad34fa-0812-459e-b880-d2a225b46ba9}</Project>
-      <Name>Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{80d32fbe-db84-403d-98d6-7b3532e65bab}</Project>
-      <Name>Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

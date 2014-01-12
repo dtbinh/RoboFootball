@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 namespace Arbiter.Test
 {
     [TestFixture]
-    public class OrderClientTests2
+    public class GameManagerTests
     {
         Mock<IStatusMessageLogger> statusMessageLogger;
         Mock<ITimingManager> timingManager;
         Mock<IMembershipManager> membershipManager;
+        
         [SetUp]
         public void Setup()
         {
@@ -25,13 +26,16 @@ namespace Arbiter.Test
         }
 
         [Test]
-        public void GetOrderTest()
+        public void StatusCallTest()
         {
-            var m = membershipManager.Object;
+            statusMessageLogger.Expect(m => m.ShowStatusMessage(""))
+                .Verifiable();
+
             var client = new GameProcessManager(membershipManager.Object, 
                                                 timingManager.Object, 
                                                 statusMessageLogger.Object);
-            
+            client.StartGame();
+            statusMessageLogger.Verify(m => m.ShowStatusMessage(""));
         }
     }
 }
