@@ -23,6 +23,7 @@ namespace Logger.ServiceContracts
         void SubscribeForStatusMessages();
 
         // true when all teams are commited and time of testing ended
+        [OperationContract]
         void ShowStatusMessage(string message);
     }
 

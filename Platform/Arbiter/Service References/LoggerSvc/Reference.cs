@@ -455,6 +455,12 @@ namespace Arbiter.LoggerSvc {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessages", ReplyAction="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessagesResponse")]
         System.Threading.Tasks.Task SubscribeForStatusMessagesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/ShowStatusMessage", ReplyAction="http://tempuri.org/IStatusMessageLogger/ShowStatusMessageResponse")]
+        void ShowStatusMessage(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/ShowStatusMessage", ReplyAction="http://tempuri.org/IStatusMessageLogger/ShowStatusMessageResponse")]
+        System.Threading.Tasks.Task ShowStatusMessageAsync(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -498,6 +504,14 @@ namespace Arbiter.LoggerSvc {
         
         public System.Threading.Tasks.Task SubscribeForStatusMessagesAsync() {
             return base.Channel.SubscribeForStatusMessagesAsync();
+        }
+        
+        public void ShowStatusMessage(string message) {
+            base.Channel.ShowStatusMessage(message);
+        }
+        
+        public System.Threading.Tasks.Task ShowStatusMessageAsync(string message) {
+            return base.Channel.ShowStatusMessageAsync(message);
         }
     }
 }

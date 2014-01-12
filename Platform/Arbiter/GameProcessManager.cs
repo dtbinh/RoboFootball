@@ -9,13 +9,13 @@ namespace Arbiter
     public class GameProcessManager
     {
 
-        private LoggerSvc.StatusMessageLoggerClient statusClient;
-        private ConfigurationSvc.TimingManagerClient timingClient;
-        private ConfigurationSvc.MembershipManagerClient teamManagerClient;
+        private LoggerSvc.IStatusMessageLogger statusClient;
+        private  ConfigurationSvc.ITimingManager timingClient;
+        private ConfigurationSvc.IMembershipManager teamManagerClient;
 
-        public GameProcessManager(ConfigurationSvc.MembershipManagerClient teamManagerClient,
-                                  ConfigurationSvc.TimingManagerClient timingClient,
-                                  LoggerSvc.StatusMessageLoggerClient statusClient)
+        public GameProcessManager(ConfigurationSvc.IMembershipManager teamManagerClient,
+                                  ConfigurationSvc.ITimingManager timingClient,
+                                  LoggerSvc.IStatusMessageLogger statusClient)
         {
             //TODO: test if this services are available;
             if (teamManagerClient == null) throw new ArgumentException("Team Manager Client Should not be null");
@@ -44,7 +44,6 @@ namespace Arbiter
             EndTime(0);
             EndGame();
         }
-
 
         private void StartGame()
         {
