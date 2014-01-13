@@ -28,14 +28,11 @@ namespace Arbiter.Test
         [Test]
         public void StatusCallTest()
         {
-            statusMessageLogger.Expect(m => m.ShowStatusMessage(""))
-                .Verifiable();
-
             var client = new GameProcessManager(membershipManager.Object, 
                                                 timingManager.Object, 
                                                 statusMessageLogger.Object);
             client.StartGame();
-            statusMessageLogger.Verify(m => m.ShowStatusMessage(""));
+            statusMessageLogger.Verify(m => m.ShowStatusMessage(It.IsAny<string>()));
         }
     }
 }

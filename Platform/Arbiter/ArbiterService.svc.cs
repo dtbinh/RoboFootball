@@ -20,10 +20,10 @@ namespace Arbiter
 
         public ArbiterService()
         {
-            statusClient= new LoggerSvc.StatusMessageLoggerClient();
-            timingClient = new ConfigurationSvc.TimingManagerClient();
-            teamManagerClient = new ConfigurationSvc.MembershipManagerClient();
-            gpm= new GameProcessManager(teamManagerClient,timingClient,statusClient);
+            //statusClient= new LoggerSvc.StatusMessageLoggerClient();
+            //timingClient = new ConfigurationSvc.TimingManagerClient();
+            //teamManagerClient = new ConfigurationSvc.MembershipManagerClient();
+            //gpm= new GameProcessManager(teamManagerClient,timingClient,statusClient);
         }
 
         public void OnConfigurationIsReady()
