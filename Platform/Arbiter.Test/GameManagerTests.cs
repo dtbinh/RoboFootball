@@ -22,6 +22,10 @@ namespace Arbiter.Test
         {
             statusMessageLogger = new Mock<IStatusMessageLogger>();
             timingManager = new Mock<ITimingManager>();
+            var gametimings = new GameTimings();
+            var datetimenow= DateTime.Now.AddMilliseconds(1000);
+            gametimings.GameStartDate = datetimenow;
+            timingManager.Setup(p=>p.GetGameTimings()).Returns(gametimings);
             membershipManager = new Mock<IMembershipManager>();
         }
 
