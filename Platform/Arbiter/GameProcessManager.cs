@@ -58,8 +58,6 @@ namespace Arbiter
             ActivateSupervisors();
 
             statusClient.ShowStatusMessage("SubArbiters has been activated");
-
-            //notofocation to user
         }
 
         public void EndGame()

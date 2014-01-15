@@ -158,7 +158,10 @@ namespace Arbiter.Test
             var client = new GameProcessManager(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
-            var threads = client.SupervisorThreadFactory(new List<PlayerSupervisor> { supervisor }); 
+            var threads = client.SupervisorThreadFactory(new List<PlayerSupervisor> { supervisor });
+            Assert.That(threads, Is.Not.Null, "Collection of returned threads is null");
+            Assert.That(threads, Is.Not.Empty, "Collection of returned threads is empty");
+            Assert.That(threads.Count(), Is.EqualTo(1), "Collection of threads contains more than 1 supervisor");
         }
 
     }
