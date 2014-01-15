@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -85,5 +84,21 @@ namespace Configuration.DataContracts
         [DataMember]
         public Color Marker { get; set; }
 
+    }
+
+    [DataContract]
+    public class Color
+    {
+        [DataMember]
+        public byte r { get; set; }
+
+        [DataMember]
+        public byte g { get; set; }
+
+        [DataMember]
+        public byte b { get; set; }
+
+        [DataMember]
+        public byte a { get; set; }
     }
 }
