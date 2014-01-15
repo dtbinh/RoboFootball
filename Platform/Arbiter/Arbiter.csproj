@@ -85,23 +85,23 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Service References\LoggerSvc\LoggerService.disco" />
-    <Content Include="Service References\LoggerSvc\configuration91.svcinfo" />
-    <Content Include="Service References\LoggerSvc\configuration.svcinfo" />
-    <Content Include="Service References\LoggerSvc\Reference.svcmap">
+    <None Include="Service References\LoggerSvc\LoggerService.disco" />
+    <None Include="Service References\LoggerSvc\configuration91.svcinfo" />
+    <None Include="Service References\LoggerSvc\configuration.svcinfo" />
+    <None Include="Service References\LoggerSvc\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Service References\ObserverSvc\Arbiter.ObserverSvc.PhysicInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ObserverSvc\ObserverService.disco" />
-    <Content Include="Service References\ObserverSvc\configuration91.svcinfo" />
-    <Content Include="Service References\ObserverSvc\configuration.svcinfo" />
-    <Content Include="Service References\ObserverSvc\Reference.svcmap">
+    <None Include="Service References\ObserverSvc\ObserverService.disco" />
+    <None Include="Service References\ObserverSvc\configuration91.svcinfo" />
+    <None Include="Service References\ObserverSvc\configuration.svcinfo" />
+    <None Include="Service References\ObserverSvc\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -132,12 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ConfigurationSvc\ConfigurationService.wsdl" />
-    <None Include="Service References\ConfigurationSvc\ConfigurationService.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService1.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService2.xsd" />
     <None Include="Service References\ConfigurationSvc\ConfigurationService3.xsd" />
-    <Content Include="Service References\ObserverSvc\ObserverService.wsdl" />
-    <Content Include="Service References\LoggerSvc\LoggerService.wsdl" />
+    <None Include="Service References\ObserverSvc\ObserverService.wsdl" />
+    <None Include="Service References\LoggerSvc\LoggerService.wsdl" />
     <None Include="Service References\LoggerSvc\LoggerService.xsd" />
     <None Include="Service References\LoggerSvc\LoggerService1.xsd" />
     <None Include="Service References\LoggerSvc\LoggerService2.xsd" />

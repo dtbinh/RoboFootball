@@ -467,7 +467,7 @@ namespace Arbiter.ConfigurationSvc {
                 return this.MarkerField;
             }
             set {
-                if ((this.MarkerField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.MarkerField, value) != true)) {
                     this.MarkerField = value;
                     this.RaisePropertyChanged("Marker");
                 }
@@ -592,21 +592,26 @@ namespace Arbiter.ConfigurationSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
     [System.SerializableAttribute()]
-    public partial struct Color : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Color : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short knownColorField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte aField;
         
-        private string nameField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte bField;
         
-        private short stateField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte gField;
         
-        private long valueField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte rField;
         
+        [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
                 return this.extensionDataField;
@@ -616,61 +621,61 @@ namespace Arbiter.ConfigurationSvc {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short knownColor {
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte a {
             get {
-                return this.knownColorField;
+                return this.aField;
             }
             set {
-                if ((this.knownColorField.Equals(value) != true)) {
-                    this.knownColorField = value;
-                    this.RaisePropertyChanged("knownColor");
+                if ((this.aField.Equals(value) != true)) {
+                    this.aField = value;
+                    this.RaisePropertyChanged("a");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public string name {
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte b {
             get {
-                return this.nameField;
+                return this.bField;
             }
             set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
+                if ((this.bField.Equals(value) != true)) {
+                    this.bField = value;
+                    this.RaisePropertyChanged("b");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short state {
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte g {
             get {
-                return this.stateField;
+                return this.gField;
             }
             set {
-                if ((this.stateField.Equals(value) != true)) {
-                    this.stateField = value;
-                    this.RaisePropertyChanged("state");
+                if ((this.gField.Equals(value) != true)) {
+                    this.gField = value;
+                    this.RaisePropertyChanged("g");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public long value {
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte r {
             get {
-                return this.valueField;
+                return this.rField;
             }
             set {
-                if ((this.valueField.Equals(value) != true)) {
-                    this.valueField = value;
-                    this.RaisePropertyChanged("value");
+                if ((this.rField.Equals(value) != true)) {
+                    this.rField = value;
+                    this.RaisePropertyChanged("r");
                 }
             }
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        void RaisePropertyChanged(string propertyName) {
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));

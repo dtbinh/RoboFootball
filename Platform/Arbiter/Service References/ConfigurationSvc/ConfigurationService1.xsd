@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
   <xs:complexType name="GameGeometry">
     <xs:sequence>
       <xs:element minOccurs="0" name="BallRadius" type="xs:int" />
@@ -71,7 +70,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Length" type="xs:int" />
           <xs:element minOccurs="0" name="MachineId" type="xs:unsignedByte" />
-          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="Marker" type="q1:Color" />
+          <xs:element minOccurs="0" name="Marker" nillable="true" type="tns:Color" />
           <xs:element minOccurs="0" name="MarkerPositionX" type="xs:int" />
           <xs:element minOccurs="0" name="MarkerPositionY" type="xs:int" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
@@ -81,6 +80,15 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PlayerData" nillable="true" type="tns:PlayerData" />
+  <xs:complexType name="Color">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="a" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="b" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="g" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="r" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Color" nillable="true" type="tns:Color" />
   <xs:complexType name="ArrayOfPlayerData">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerData" nillable="true" type="tns:PlayerData" />

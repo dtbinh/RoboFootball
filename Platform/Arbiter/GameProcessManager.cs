@@ -53,8 +53,6 @@ namespace Arbiter
             double millisecondsToWait = (dateofstart - DateTime.Now).TotalMilliseconds;
             if (millisecondsToWait < 0) throw new NotImplementedException("here should be called mvc client with message that the time has run out");
 
-            Thread.Sleep((int)millisecondsToWait);
-
             statusClient.ShowStatusMessage("The game has been started");
 
             ActivateSupervisors();
@@ -110,17 +108,36 @@ namespace Arbiter
         public void ActivateSupervisors()
         {
             var mem = teamManagerClient.GetMembership();
-            supervisors = mem.Teams.SelectMany(team => team.Players)
-                                   .Select(player => new PlayerSupervisor(player));
-
-            foreach (var t in supervisors.Select(supervisor => new Thread(supervisor.CheckRules)))
+            supervisors = SupervisorFactory(mem);
+            var threads = SupervisorThreadFactory(supervisors);
+            foreach (var t in threads)
             {
                 t.Start();
             }
         }
 
+        public IEnumerable<PlayerSupervisor> SupervisorFactory(Arbiter.ConfigurationSvc.GameMembership mem)
+        {
+            if (mem == null) throw new NullReferenceException("Team manager client returned null. But should return data for the team!");
+            var sv = mem.Teams.SelectMany(team => team.Players)
+                                   .Select(player => new PlayerSupervisor(player));
+            return sv;
+        }
+
+
+        public IEnumerable<Thread> SupervisorThreadFactory(IEnumerable<PlayerSupervisor> supervisors)
+        {
+            var threads = supervisors.Select(supervisor => new Thread(supervisor.CheckRules));
+            return threads;
+        }
+
         public void DisactivateSupervisors()
         {
+            if (supervisors == null)
+            {
+                statusClient.ShowStatusMessage("Disactivating of supervisors: nothing to disactivate. Supervisors are null");
+                return;
+            }
             foreach (var s in supervisors)
             {
                 s.RequestStop();

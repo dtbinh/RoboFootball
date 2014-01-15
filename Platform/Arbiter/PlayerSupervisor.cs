@@ -13,10 +13,10 @@ namespace Arbiter
         private ConfigurationSvc.PlayerData player;
         private bool shouldStop;
 
-        public PlayerSupervisor(ConfigurationSvc.PlayerData palyer)
+        public PlayerSupervisor(ConfigurationSvc.PlayerData player)
         {
-            if (palyer == null) throw new ArgumentException("Player data should not be null");
-            this.palyer = palyer;
+            if (player == null) throw new ArgumentException("Player data should not be null");
+            this.palyer = player;
         }
         public void RequestStop()
         {
