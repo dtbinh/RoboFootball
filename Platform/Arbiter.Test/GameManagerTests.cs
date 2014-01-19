@@ -80,8 +80,6 @@ namespace Arbiter.Test
             gametimings.GameStartDate = datetimenow;
             timingManager.Setup(p => p.GetGameTimings()).Returns(gametimings);
 
-
-
             var player = new Arbiter.ConfigurationSvc.PlayerData()
             {
                 Name = "Player",
@@ -110,6 +108,8 @@ namespace Arbiter.Test
                 Teams = new List<TeamMembership> { team }
             };
 
+            team.Players.Add(player);
+            membership.Teams.Add(team);
             membershipManager.Setup(m => m.GetMembership()).Returns(membership);
 
             var client = new GameProcessManager(membershipManager.Object,
@@ -138,6 +138,8 @@ namespace Arbiter.Test
             {
             };
 
+            team.Players.Add(player);
+            membership.Teams.Add(team);
             membershipManager.Setup(m => m.GetMembership()).Returns(membership);
 
             var client = new GameProcessManager(membershipManager.Object,
