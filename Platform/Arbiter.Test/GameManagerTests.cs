@@ -28,7 +28,7 @@ namespace Arbiter.Test
         [Test]
         public void StatusCallTest()
         {
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                                 timingManager.Object,
                                                 statusMessageLogger.Object);
             client.StartGame();
@@ -44,7 +44,7 @@ namespace Arbiter.Test
             gametimings.GameStartDate = datetimenow;
             timingManager.Setup(p => p.GetGameTimings()).Returns(gametimings);
 
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
             client.StartGame();
@@ -60,7 +60,7 @@ namespace Arbiter.Test
             gametimings.GameStartDate = datetimenow;
             timingManager.Setup(p => p.GetGameTimings()).Returns(gametimings);
 
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
             client.StartGame();
@@ -72,7 +72,6 @@ namespace Arbiter.Test
         }
 
         [Test]
-        [ExpectedException(typeof(NullReferenceException))]
         public void StartWithOneTeam()
         {
             var gametimings = new GameTimings();
@@ -108,11 +107,9 @@ namespace Arbiter.Test
                 Teams = new List<TeamMembership> { team }
             };
 
-            team.Players.Add(player);
-            membership.Teams.Add(team);
             membershipManager.Setup(m => m.GetMembership()).Returns(membership);
 
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
             client.StartGame();
@@ -124,7 +121,7 @@ namespace Arbiter.Test
         }
 
         [Test]
-        public void TestSupervisorsFactoryTest()
+        public void PlayerSupervisorsFactoryTest()
         {
 
             var player = new Arbiter.ConfigurationSvc.PlayerData()
@@ -132,17 +129,17 @@ namespace Arbiter.Test
             };
             var team = new TeamMembership
             {
+                Players = new List<Arbiter.ConfigurationSvc.PlayerData> { player },
             };
 
             var membership = new GameMembership
             {
+                Teams = new List<TeamMembership> { team }
             };
 
-            team.Players.Add(player);
-            membership.Teams.Add(team);
             membershipManager.Setup(m => m.GetMembership()).Returns(membership);
 
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
             var spv = client.SupervisorFactory(membership);
@@ -157,7 +154,7 @@ namespace Arbiter.Test
         {
             var player = new Arbiter.ConfigurationSvc.PlayerData();
             var supervisor = new PlayerSupervisor(player);
-            var client = new GameProcessManager(membershipManager.Object,
+            var client = new GameProvider(membershipManager.Object,
                                     timingManager.Object,
                                     statusMessageLogger.Object);
             var threads = client.SupervisorThreadFactory(new List<PlayerSupervisor> { supervisor });

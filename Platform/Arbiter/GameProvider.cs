@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arbiter.DataContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,14 +7,16 @@ using System.Web;
 
 namespace Arbiter
 {
-    public class GameProcessManager
+    public class GameProvider
     {
+        public GameState State { get; set; }
+
 
         private LoggerSvc.IStatusMessageLogger statusClient;
         private  ConfigurationSvc.ITimingManager timingClient;
         private ConfigurationSvc.IMembershipManager teamManagerClient;
 
-        public GameProcessManager(ConfigurationSvc.IMembershipManager teamManagerClient,
+        public GameProvider(ConfigurationSvc.IMembershipManager teamManagerClient,
                                   ConfigurationSvc.ITimingManager timingClient,
                                   LoggerSvc.IStatusMessageLogger statusClient)
         {
@@ -24,11 +27,12 @@ namespace Arbiter
             this.teamManagerClient = teamManagerClient;
             this.timingClient = timingClient;
             this.statusClient = statusClient;
+            State = GameState.Ended;
         }
 
         private IEnumerable<PlayerSupervisor> supervisors;
 
-        public void PerformGmameProcess()
+        public void PerformGameProcess()
         {
             var timings = timingClient.GetGameTimings();
 
@@ -58,7 +62,13 @@ namespace Arbiter
             ActivateSupervisors();
 
             statusClient.ShowStatusMessage("SubArbiters has been activated");
+
+            State = GameState.Started;
+
+            statusClient.ShowStatusMessage("Game State is: "+State);
         }
+
+
 
         public void EndGame()
         {
