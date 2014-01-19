@@ -11,24 +11,28 @@ namespace Arbiter
         ConfigurationSvc.PlayerData palyer;
         ObserverSvc.PhysicInfo currentPhysicInfo;
         private ConfigurationSvc.PlayerData player;
-        private bool shouldStop;
-        public bool Suspend { get; set; }
+        public bool IsSuspended { get; set; }
+        public bool IsRun { get; set; }
+        Thread thread;
+
 
         public PlayerSupervisor(ConfigurationSvc.PlayerData player)
         {
             if (player == null) throw new ArgumentException("Player data should not be null");
             this.palyer = player;
+            IsRun = true;
+            IsSuspended = false;
+            thread = new Thread(this.CheckRules);
+            thread.Start();
         }
-        public void RequestStop()
-        {
-            shouldStop = true;
-        }
+
+        
 
         public void CheckRules()
         {
-            while (!shouldStop)
+            while (IsRun)
             {
-                if (Suspend) continue;
+                if (IsSuspended) continue;
                 //checking logic
             }
         }
