@@ -11,6 +11,12 @@ namespace Arbiter
 {
     interface IGameProvider
     {
+        // Create supervisors etc
+        //Could be only if Configuration is ready! (check for configuration is ready method)
+        public GameStatus PrepareGame(GameProperties gameProperties);
+        //Start game means change game status to GameStarted. (Could be only Game Ended before)
+        //Check timings etc
+        //Could be if game has been prepared
         public GameStatus StartGame(GameProperties gameProperties);
         public GameStatus EndGame(GameProperties gameProperties);
         public GameStatus StartTime(int number);
