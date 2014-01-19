@@ -13,10 +13,10 @@ namespace MvcClient.Controllers
 
         public HomeController()
         {
-            using (var sml = new LoggerSvc.StatusMessageLoggerClient())
-            {
-                sml.SubscribeForStatusMessages();
-            }
+            //using (var sml = new LoggerSvc.StatusMessageLoggerClient())
+            //{
+            //    sml.SubscribeForStatusMessages();
+            //}
         }
 
         public ActionResult Index()
