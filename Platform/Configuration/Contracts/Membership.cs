@@ -52,6 +52,9 @@ namespace Configuration.DataContracts
 
         [DataMember]
         public byte TeamId { get; set; }
+
+        [DataMember]
+        public bool IsActive { get; set; }
     }
 
     [DataContract]
@@ -65,6 +68,16 @@ namespace Configuration.DataContracts
     {
         [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
+        public RobotData RobotData { get; set; }
+    }
+
+    [DataContract]
+    public class RobotData
+    {
+        [DataMember]
+        public bool IsActive { get; set; }
 
         [DataMember]
         public byte MachineId { get; set; }

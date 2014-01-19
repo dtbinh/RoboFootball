@@ -11,7 +11,6 @@ namespace Arbiter
     {
         public GameState State { get; set; }
 
-
         private LoggerSvc.IStatusMessageLogger statusClient;
         private  ConfigurationSvc.ITimingManager timingClient;
         private ConfigurationSvc.IMembershipManager teamManagerClient;

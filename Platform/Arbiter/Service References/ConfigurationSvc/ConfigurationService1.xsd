@@ -60,6 +60,7 @@
   <xs:complexType name="UnitData">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
     </xs:sequence>
   </xs:complexType>
@@ -68,18 +69,25 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:UnitData">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Length" type="xs:int" />
-          <xs:element minOccurs="0" name="MachineId" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="Marker" nillable="true" type="tns:Color" />
-          <xs:element minOccurs="0" name="MarkerPositionX" type="xs:int" />
-          <xs:element minOccurs="0" name="MarkerPositionY" type="xs:int" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Width" type="xs:int" />
+          <xs:element minOccurs="0" name="RobotData" nillable="true" type="tns:RobotData" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PlayerData" nillable="true" type="tns:PlayerData" />
+  <xs:complexType name="RobotData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Length" type="xs:int" />
+      <xs:element minOccurs="0" name="MachineId" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Marker" nillable="true" type="tns:Color" />
+      <xs:element minOccurs="0" name="MarkerPositionX" type="xs:int" />
+      <xs:element minOccurs="0" name="MarkerPositionY" type="xs:int" />
+      <xs:element minOccurs="0" name="Width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RobotData" nillable="true" type="tns:RobotData" />
   <xs:complexType name="Color">
     <xs:sequence>
       <xs:element minOccurs="0" name="a" type="xs:unsignedByte" />

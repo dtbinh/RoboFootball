@@ -22,7 +22,7 @@ namespace TEstRunner
             RemoteTestRunner remoteTestRunner = new RemoteTestRunner();
             remoteTestRunner.Load(testPackage);
 
-            remoteTestRunner.Run(new NullListener(), new SingleTestFilter("StatusCallTest"), false, LoggingThreshold.Error);
+            remoteTestRunner.Run(new NullListener(), new SingleTestFilter("StartWithOneTeam"), false, LoggingThreshold.Error);
         }
     }
 

@@ -110,7 +110,9 @@
     </Compile>
     <Compile Include="Contracts\IGameProcessManager.cs" />
     <Compile Include="Contracts\GameStatus.cs" />
+    <Compile Include="GameProperties.cs" />
     <Compile Include="GameProvider.cs" />
+    <Compile Include="IGameProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ConfigurationSvc\Reference.cs">
       <AutoGen>True</AutoGen>

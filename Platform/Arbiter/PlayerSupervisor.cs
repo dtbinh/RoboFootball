@@ -12,6 +12,7 @@ namespace Arbiter
         ObserverSvc.PhysicInfo currentPhysicInfo;
         private ConfigurationSvc.PlayerData player;
         private bool shouldStop;
+        public bool Suspend { get; set; }
 
         public PlayerSupervisor(ConfigurationSvc.PlayerData player)
         {
@@ -27,9 +28,9 @@ namespace Arbiter
         {
             while (!shouldStop)
             {
- 
+                if (Suspend) continue;
+                //checking logic
             }
-
         }
     }
 
