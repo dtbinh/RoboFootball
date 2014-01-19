@@ -110,9 +110,21 @@
     </Compile>
     <Compile Include="Contracts\IGameProcessManager.cs" />
     <Compile Include="Contracts\GameStatus.cs" />
+    <Compile Include="GameStates\Context.cs" />
     <Compile Include="GameProperties.cs" />
     <Compile Include="GameProvider.cs" />
+    <Compile Include="GameStates\GameEndedState.cs" />
+    <Compile Include="GameStates\GameInProcessState.cs" />
+    <Compile Include="GameStates\GameSuspendedState.cs" />
+    <Compile Include="GameStates\ITimeState.cs" />
+    <Compile Include="GameStates\NotAGameState.cs" />
+    <Compile Include="GameStates\GamePreparedState.cs" />
+    <Compile Include="GameStates\NotATimeState.cs" />
+    <Compile Include="GameStates\TimeEndedState.cs" />
+    <Compile Include="GameStates\TimeFinishState.cs" />
+    <Compile Include="GameStates\TimeInProgressState.cs" />
     <Compile Include="IGameProvider.cs" />
+    <Compile Include="GameStates\IGameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ConfigurationSvc\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -130,6 +142,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="PlayerSupervisor.cs" />
+    <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

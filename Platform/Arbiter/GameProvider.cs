@@ -1,4 +1,5 @@
 ﻿using Arbiter.DataContracts;
+using Arbiter.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,82 @@ namespace Arbiter
 {
     public class GameProvider:IGameProvider
     {
+        private GameContext gameContext;
+        private GameProperties gameProperties;
+        public GameProvider(GameProperties gameProperties)
+        {
+            if(gameProperties==null) throw new ArgumentException("game properties should not be null");
+            this.gameProperties = gameProperties;
+            var timecount = gameProperties.Timing.GetGameTimings().TimeCount;
+            gameContext = new GameContext(new TimeContext(timecount));
+        }
+        public GameStatus StartGame(GameProperties gameProperties)
+        {
+            gameContext.goNext();
+
+        }
+
+        public GameStatus EndGame()
+        {
+            gameContext.goNext();
+        }
+
+        public GameStatus StartTime(int number)
+        {
+            if (gameContext.CurrentGameState.GetType == typeof(GameInProcessState))
+                gameContext.timeContext.goNext();
+        }
+
+        public GameStatus EndTime(int number)
+        {
+            gameContext.goNext();
+        }
+
+        public GameStatus SuspendGame()
+        {
+            gameContext.CurrentGameState = new GameSuspendedState();
+        }
+
+        public GameStatus ResumeGame()
+        {
+            gameContext.CurrentGameState = new GameInProcessState();
+        }
+
+        public bool ActivateRobotsOfPlayers(IEnumerable<ConfigurationSvc.PlayerData> playersToActivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DisactivateRobotsOfPlayers(IEnumerable<ConfigurationSvc.PlayerData> playersToDisactivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ActivateSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DisactivateSupervisors(IEnumerable<PlayerSupervisor> supervisorsToDisactivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SuspendSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool StartSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PlayerSupervisor> SupervisorFactory(ConfigurationSvc.GameMembership mem)
+        {
+            throw new NotImplementedException();
+        }
+
         //public GameState State { get; set; }
 
         //private LoggerSvc.IStatusMessageLogger statusClient;
@@ -38,7 +115,7 @@ namespace Arbiter
         //    StartGame();
         //    StartTime(0);
 
-        //    for (int i = 0; i < timings.TimeCount - 1; i++)
+        //    for (int i = 0; i < timings.timeCount - 1; i++)
         //    {
         //        EndTime(i);
         //        TimeOut();
@@ -151,74 +228,6 @@ namespace Arbiter
         //        //LoggerSvc.addLog
         //    }
         //}
-        public GameStatus StartGame(GameProperties gameProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus EndGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus StartTime(int number)
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus EndTime(int number)
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus TimeOut()
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus SuspendGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public GameStatus ResumeGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ActivateRobotsOfPlayers(IEnumerable<ConfigurationSvc.PlayerData> playersToActivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DisactivateRobotsOfPlayers(IEnumerable<ConfigurationSvc.PlayerData> playersToDisactivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ActivateSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DisactivateSupervisors(IEnumerable<PlayerSupervisor> supervisorsToDisactivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool SuspendSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool StartSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PlayerSupervisor> SupervisorFactory(ConfigurationSvc.GameMembership mem)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

@@ -106,7 +106,7 @@ namespace Arbiter.ConfigurationSvc {
         private System.DateTime GameStartDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimeCountField;
+        private byte TimeCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TimeLengthField;
@@ -151,7 +151,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TimeCount {
+        public byte TimeCount {
             get {
                 return this.TimeCountField;
             }

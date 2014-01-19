@@ -39,7 +39,7 @@ namespace Configuration.DataContracts
         public int TimeLength { get; set; }
 
         [DataMember]
-        public int TimeCount { get; set; }
+        public byte TimeCount { get; set; }
 
         [DataMember]
         public int TimeOutLength { get; set; }

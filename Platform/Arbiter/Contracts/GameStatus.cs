@@ -19,6 +19,10 @@ namespace Arbiter.DataContracts
     public enum GameState
     {
         [EnumMember]
+        NotAState = "Nothing",
+        [EnumMember]
+        Prepared = "Preparation for game has been finished",
+        [EnumMember]
         NotStarted = "Nothing is started",
         [EnumMember]
         Started = "The game process has been started. The time is not started.",
