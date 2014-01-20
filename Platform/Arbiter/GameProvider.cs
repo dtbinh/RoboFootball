@@ -32,7 +32,7 @@ namespace Arbiter
 
         public GameStatus StartTime(int number)
         {
-            if (gameContext.CurrentGameState.GetType == typeof(GameInProcessState))
+            if (gameContext.CurrentGameState.GetType == typeof(GameInProgressState))
                 gameContext.timeContext.goNext();
         }
 
@@ -48,7 +48,7 @@ namespace Arbiter
 
         public GameStatus ResumeGame()
         {
-            gameContext.CurrentGameState = new GameInProcessState();
+            gameContext.CurrentGameState = new GameInProgressState();
         }
 
         public bool ActivateRobotsOfPlayers(IEnumerable<ConfigurationSvc.PlayerData> playersToActivate)
@@ -228,6 +228,31 @@ namespace Arbiter
         //        //LoggerSvc.addLog
         //    }
         //}
-      
+
+
+        public GameStatus PrepareGame(GameProperties gameProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameStatus EndGame(GameProperties gameProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameStatus TimeOut(GameProperties gameProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameStatus SuspendGame(GameProperties gameProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameStatus ResumeGame(GameProperties gameProperties)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -114,7 +114,8 @@
     <Compile Include="GameProperties.cs" />
     <Compile Include="GameProvider.cs" />
     <Compile Include="GameStates\GameEndedState.cs" />
-    <Compile Include="GameStates\GameInProcessState.cs" />
+    <Compile Include="GameStates\GameInProgressState.cs" />
+    <Compile Include="GameStates\GameStateService.cs" />
     <Compile Include="GameStates\GameSuspendedState.cs" />
     <Compile Include="GameStates\ITimeState.cs" />
     <Compile Include="GameStates\NotAGameState.cs" />

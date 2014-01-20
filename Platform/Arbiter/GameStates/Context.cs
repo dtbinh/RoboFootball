@@ -12,7 +12,7 @@ namespace Arbiter.States
         public TimeContext timeContext { get; private set; }
         public GameContext(TimeContext timeContext)
         {
-            CurrentGameState = new NotAGameState();
+            StateService.Instance.SetStateTo<NotAGameState>(this);
             if (timeContext == null) throw new ArgumentException("TimeContext could not be null");
             this.timeContext = timeContext;
         }
@@ -24,9 +24,9 @@ namespace Arbiter.States
 
     class TimeContext 
     {
+        public ITimeState CurrentTimeState { get; set; }
         public byte currentTime { get; private set; }
         public  byte timeCount{get; private set;}
-        public ITimeState CurrentTimeState { get; private set; }
         public TimeContext(byte timeCount)
         {
             if (timeCount>=0) this.timeCount=timeCount;
@@ -40,4 +40,7 @@ namespace Arbiter.States
         public void currentTimeInc() {currentTime++; }
 
     }
+
+    
+
 }
