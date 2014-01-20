@@ -11,5 +11,10 @@ namespace Arbiter.States
         {
             StateService.Instance.SetStateTo<GamePreparedState>(context);
         }
+
+        public string Description
+        {
+            get { return ""; }
+        }
     }
 }

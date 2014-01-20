@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Arbiter.States
 {
-    class TimeFinishState:ITimeState
+    interface IState
     {
-        public void goNext(TimeContext context)
-        {
-        }
+        string Description { get; }
     }
 }

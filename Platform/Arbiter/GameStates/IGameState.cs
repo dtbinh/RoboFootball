@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Arbiter.States
 {
-    interface IGameState
+    interface IGameState:IState
     {
-        public void goNext(GameContext context);
+        void goNext(GameContext context);
     }
 }

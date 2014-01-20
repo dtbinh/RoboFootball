@@ -31,7 +31,7 @@ namespace Arbiter.States
         {
             if (timeCount>=0) this.timeCount=timeCount;
             else timeCount=0;
-            CurrentTimeState = new NotATimeState();
+            StateService.Instance.SetStateTo<NotATimeState>(this);
         }
         public void goNext()
         {

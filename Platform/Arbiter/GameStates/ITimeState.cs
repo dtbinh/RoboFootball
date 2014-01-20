@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arbiter.States
 {
-    interface ITimeState
+    interface ITimeState:IState
     {
         public void goNext(TimeContext context);
     }

@@ -26,7 +26,7 @@ namespace Arbiter.States
                 {typeof(NotATimeState),Singleton<NotATimeState>.Instance},
                 {typeof(TimeInProgressState),Singleton<TimeInProgressState>.Instance},
                 {typeof(TimeEndedState),Singleton<TimeEndedState>.Instance},
-                {typeof(TimeFinishState),Singleton<TimeFinishState>.Instance},
+                {typeof(TimeLimboState),Singleton<TimeLimboState>.Instance},
             };
         }
 
