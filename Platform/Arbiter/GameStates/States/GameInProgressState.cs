@@ -11,10 +11,13 @@ namespace Arbiter.States
         {
             var timeLimboState = StateService.Instance.State<TimeLimboState>();
 
-            if(context.timeContext.CurrentTimeState.Equals(timeLimboState))
-            StateService.Instance.SetStateTo<GameEndedState>(context);
+            if (context.timeContext.CurrentTimeState.Equals(timeLimboState))
+                StateService.Instance.SetStateTo<GameEndedState>(context);
             else
+            {
+                context.timeContext.goNext();
                 StateService.Instance.SetStateTo<GameInProgressState>(context);
+            }
         }
 
         public string Description

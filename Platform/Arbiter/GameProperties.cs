@@ -13,6 +13,7 @@ namespace Arbiter
 
         public ConfigurationSvc.IMembershipManager Membership { get; set; }
         public ConfigurationSvc.ITimingManager Timing { get; set; }
+        public ConfigurationSvc.INotificationManager Notification { get; set; }
         public LoggerSvc.IStatusMessageLogger Logger { get; set; }
 
 

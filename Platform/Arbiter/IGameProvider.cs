@@ -23,6 +23,8 @@ namespace Arbiter
         GameStatus TimeOut(GameProperties gameProperties);
         GameStatus SuspendGame(GameProperties gameProperties);
         GameStatus ResumeGame(GameProperties gameProperties);
+        
+        
         // robots could run they inner programs
         bool ActivateRobotsOfPlayers(IEnumerable<PlayerData> playersToActivate);
         // robots could not run they inner programs
@@ -36,5 +38,7 @@ namespace Arbiter
         // This method starts Supervisor's rule checing process
         bool StartSupervisors(IEnumerable<PlayerSupervisor> supervisorsToActivate);
         IEnumerable<PlayerSupervisor> SupervisorFactory(Arbiter.ConfigurationSvc.GameMembership mem);
+
+        IGameTimer getTimer(Arbiter.ConfigurationSvc.GameTimings timings);
     }
 }

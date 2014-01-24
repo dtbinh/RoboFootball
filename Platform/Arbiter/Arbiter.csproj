@@ -127,6 +127,7 @@
     <Compile Include="GameStates\States\TimeInProgressState.cs" />
     <Compile Include="IGameProvider.cs" />
     <Compile Include="GameStates\IGameState.cs" />
+    <Compile Include="IGameTimer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ConfigurationSvc\Reference.cs">
       <AutoGen>True</AutoGen>

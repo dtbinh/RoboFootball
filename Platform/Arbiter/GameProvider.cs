@@ -1,11 +1,16 @@
-﻿using Arbiter.States;
+﻿using Arbiter.DataContracts;
+using Arbiter.States;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace Arbiter
 {
-    public class GameProvider:IGameProvider
+    public class GameProvider : IGameProvider, ConfigurationSvc.INotificationManagerCallback
     {
         private GameContext context;
         private GameProperties gameProperties;
+        private IList<PlayerSupervisor> supervisors;
+        public IGameTimer gameTimer { get; private set; }
         public GameProvider(GameProperties gameProperties)
         {
             if (gameProperties == null) throw new ArgumentException("game properties should not be null");
@@ -14,44 +19,90 @@ namespace Arbiter
             context = new GameContext(new TimeContext(timecount));
         }
 
-        public DataContracts.GameStatus PrepareGame(GameProperties gameProperties)
+        public void OnConfigurationIsReady()
         {
+            PrepareGame(this.gameProperties);
+        }
 
-
+        public GameStatus PrepareGame(GameProperties gameProperties)
+        {
+            var membership = gameProperties.Membership.GetMembership();
+            supervisors = SupervisorFactory(membership).ToList();
+            var timings = gameProperties.Timing.GetGameTimings();
+            var gametimer = getTimer(timings);
             context.goNext();
+
+            return new GameStatus
+            {
+                Message = context.CurrentGameState.Description,
+                State = context.CurrentGameState
+            };
         }
 
-        public DataContracts.GameStatus StartGame(GameProperties gameProperties)
+        public GameStatus StartGame(GameProperties gameProperties)
+        {
+            var supervisorsAreActivated = ActivateSupervisors(supervisors);
+            var teams = gameProperties.Membership.GetMembership().Teams;
+            var robotsAreActivated = false;
+            foreach (var team in teams)
+            {
+                robotsAreActivated &= ActivateRobotsOfPlayers(team.Players);
+            }
+            if (robotsAreActivated && supervisorsAreActivated)
+            {
+                context.goNext();
+            }
+
+            return new GameStatus
+            {
+                Message = context.CurrentGameState.Description,
+                State = context.CurrentGameState
+            };
+        }
+
+        public GameStatus EndGame(GameProperties gameProperties)
         {
             throw new System.NotImplementedException();
         }
 
-        public DataContracts.GameStatus EndGame(GameProperties gameProperties)
+        public GameStatus StartTime(int number)
+        {
+            gameTimer.SetTime(timings);
+           
+            //need to check contexts!
+            gameTimer.CallAfter(EndTime,number); // make this in a more generic way!!!
+            if (StartSupervisors(supervisors))
+            {
+                gameTimer.Start();
+                context.goNext();
+            }
+
+
+        }
+
+        public GameStatus EndTime(int number)
+        {
+            //need to check contexts!
+            gameTimer.SetTime(timings);
+            gameTimer.CallAfter(StartTime, number); // make this in a more generic way!!!
+            if (DisactivateSupervisors(supervisors))
+            {
+                gameTimer.Stop();
+                context.goNext();
+            }
+        }
+
+        public GameStatus TimeOut(GameProperties gameProperties)
         {
             throw new System.NotImplementedException();
         }
 
-        public DataContracts.GameStatus StartTime(int number)
+        public GameStatus SuspendGame(GameProperties gameProperties)
         {
             throw new System.NotImplementedException();
         }
 
-        public DataContracts.GameStatus EndTime(int number)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public DataContracts.GameStatus TimeOut(GameProperties gameProperties)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public DataContracts.GameStatus SuspendGame(GameProperties gameProperties)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public DataContracts.GameStatus ResumeGame(GameProperties gameProperties)
+        public GameStatus ResumeGame(GameProperties gameProperties)
         {
             throw new System.NotImplementedException();
         }
@@ -89,6 +140,12 @@ namespace Arbiter
         public System.Collections.Generic.IEnumerable<PlayerSupervisor> SupervisorFactory(ConfigurationSvc.GameMembership mem)
         {
             throw new System.NotImplementedException();
+        }
+
+
+        public IGameTimer getTimer(ConfigurationSvc.GameTimings timings)
+        {
+            throw new NotImplementedException();
         }
     }
 }
