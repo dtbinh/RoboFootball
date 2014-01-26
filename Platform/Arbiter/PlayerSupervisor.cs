@@ -128,25 +128,56 @@ namespace Arbiter
 
     public class SupervisorsService
     {
-        private static Func<object, Supervisor> SpervisorFactory;
+        private static Func<ConfigurationSvc.PlayerData, Supervisor> SpervisorFactory;
+        
         public class Supervisor
         {
+            ConfigurationSvc.PlayerData playerData;
+             ObserverSvc.PhysicInfo currentPhysicInfo;
+             public bool IsSuspended { get; set; }
+             public bool IsRun { get; set; }
+             Thread thread;
+
+
             internal static void Initialize()
             {
                 SupervisorsService.SpervisorFactory = CreateSupervisor;
             }
-            private static Supervisor CreateEntry(object value)
+            private static Supervisor CreateSupervisor(ConfigurationSvc.PlayerData player)
             {
-                return new Supervisor(value);
+                if (player == null) throw new ArgumentException("Player data should not be null");
+                return new Supervisor(player);
             }
-            private Supervisor(object value)
-            {
-                this.Timestamp = DateTime.Now;
-                this.Value = value;
-            }
+            
+            private Supervisor(ConfigurationSvc.PlayerData player)
+             {
+                 this.playerData = player;
+                 IsRun = true;
+                 IsSuspended = false;
+                 thread = new Thread(this.CheckRules);
+                 thread.Start();
+             }
 
-            public DateTime Timestamp { get; private set; }
-            public object Value { get; private set; }
+             public void CheckRules()
+             {
+                 while (IsRun)
+                 {
+                     if (IsSuspended) continue;
+                     //checking logic
+                 }
+             }
+
+             public override bool Equals(object obj)
+             {
+                 if (obj.GetType() != typeof(Supervisor)) return false;
+                 var ouetrSupervisor = (Supervisor)obj;
+                 return this.playerData.Id.Equals(ouetrSupervisor.playerData.Id);
+             }
+
+             public override int GetHashCode()
+             {
+                 return playerData.Id.GetHashCode();
+             }
         }
 
         static SupervisorsService()
@@ -154,7 +185,7 @@ namespace Arbiter
             Supervisor.Initialize();
         }
 
-        static Supervisor CreateSupervisor(object value)
+        static Supervisor CreateSupervisor(ConfigurationSvc.PlayerData player)
         {
             return SpervisorFactory(value);
         }
