@@ -20,7 +20,7 @@ namespace Arbiter.States
                 {typeof(NotAGameState),Singleton<NotAGameState>.Instance},
                 {typeof(GameInProgressState),Singleton<GameInProgressState>.Instance},
                 {typeof(GameEndedState),Singleton<GameEndedState>.Instance},
-                {typeof(GamePreparedState),Singleton<GamePreparedState>.Instance},
+                {typeof(GamePreparationState),Singleton<GamePreparationState>.Instance},
                 {typeof(GameSuspendedState),Singleton<GameSuspendedState>.Instance},
 
                 {typeof(NotATimeState),Singleton<NotATimeState>.Instance},

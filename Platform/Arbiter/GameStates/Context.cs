@@ -10,6 +10,7 @@ namespace Arbiter.States
     {
         public IGameState CurrentGameState { set; get; }
         public TimeContext timeContext { get; private set; }
+
         public GameContext(TimeContext timeContext)
         {
             StateService.Instance.SetStateTo<NotAGameState>(this);

@@ -120,7 +120,7 @@
     <Compile Include="GameStates\States\GameSuspendedState.cs" />
     <Compile Include="GameStates\ITimeState.cs" />
     <Compile Include="GameStates\States\NotAGameState.cs" />
-    <Compile Include="GameStates\States\GamePreparedState.cs" />
+    <Compile Include="GameStates\States\GamePreparationState.cs" />
     <Compile Include="GameStates\States\NotATimeState.cs" />
     <Compile Include="GameStates\States\TimeEndedState.cs" />
     <Compile Include="GameStates\States\TimeLimboState.cs" />

@@ -24,20 +24,7 @@ namespace Arbiter
             PrepareGame(this.gameProperties);
         }
 
-        public GameStatus PrepareGame(GameProperties gameProperties)
-        {
-            var membership = gameProperties.Membership.GetMembership();
-            supervisors = SupervisorFactory(membership).ToList();
-            var timings = gameProperties.Timing.GetGameTimings();
-            var gametimer = getTimer(timings);
-            context.goNext();
-
-            return new GameStatus
-            {
-                Message = context.CurrentGameState.Description,
-                State = context.CurrentGameState
-            };
-        }
+        
 
         public GameStatus StartGame(GameProperties gameProperties)
         {
@@ -117,30 +104,8 @@ namespace Arbiter
             throw new System.NotImplementedException();
         }
 
-        public bool ActivateSupervisors(System.Collections.Generic.IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public bool DisactivateSupervisors(System.Collections.Generic.IEnumerable<PlayerSupervisor> supervisorsToDisactivate)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool SuspendSupervisors(System.Collections.Generic.IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool StartSupervisors(System.Collections.Generic.IEnumerable<PlayerSupervisor> supervisorsToActivate)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public System.Collections.Generic.IEnumerable<PlayerSupervisor> SupervisorFactory(ConfigurationSvc.GameMembership mem)
-        {
-            throw new System.NotImplementedException();
-        }
+     
 
 
         public IGameTimer getTimer(ConfigurationSvc.GameTimings timings)
