@@ -8,9 +8,16 @@ namespace Arbiter.States
 
     public class StateService
     {
-        private static readonly StateService instance = new StateService();
+        private static StateService instance;
 
-        public static StateService Instance { get { return instance; } }
+        public static StateService Instance
+        {
+            get
+            {
+                if (Instance == null) { instance = new StateService(); } 
+            return instance; 
+            } 
+        }
 
         IDictionary<Type, object> states ;
         
