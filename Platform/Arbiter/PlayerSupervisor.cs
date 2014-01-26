@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -12,13 +13,13 @@ namespace Arbiter
 
     //    PlayerSupervisorService instance = null;
 
-    //    private IList<PlayerSupervisor> supervisors;
+    //    private IList<PlayerSupervisor> supervisorsPool;
 
     //    public IEnumerable<PlayerSupervisor> Supervisors
     //    {
     //        get
     //        {
-    //            return supervisors
+    //            return supervisorsPool
     //                   .Select(s => s.Clone())
     //                   .Cast<PlayerSupervisor>();
     //        }
@@ -98,8 +99,8 @@ namespace Arbiter
     //            foreach (var player in team.Players)
     //            {
     //                var supervisor = new PlayerSupervisor(player);
-    //                if (supervisors.Contains(supervisor))
-    //                    supervisors.Add(supervisor);
+    //                if (supervisorsPool.Contains(supervisor))
+    //                    supervisorsPool.Add(supervisor);
     //            }
     //        }
     //    }
@@ -128,22 +129,33 @@ namespace Arbiter
 
     public class SupervisorsService
     {
+        private static SupervisorsService instance;
+        public static SupervisorsService Instance
+        {
+            get
+            {
+                if (Instance == null) { instance = new SupervisorsService(); }
+                return instance;
+            }
+        }
+
+
         private static Func<ConfigurationSvc.PlayerData, Supervisor> SpervisorFactory;
-        
+        private ObjectPool<ConfigurationSvc.PlayerData, Supervisor> supervisorsPool;
+
         public class Supervisor
         {
-            ConfigurationSvc.PlayerData playerData;
+             ConfigurationSvc.PlayerData playerData;
              ObserverSvc.PhysicInfo currentPhysicInfo;
              public bool IsSuspended { get; set; }
              public bool IsRun { get; set; }
              Thread thread;
 
-
             internal static void Initialize()
             {
-                SupervisorsService.SpervisorFactory = CreateSupervisor;
+                SupervisorsService.SpervisorFactory = SupervisorProducer;
             }
-            private static Supervisor CreateSupervisor(ConfigurationSvc.PlayerData player)
+            private static Supervisor SupervisorProducer(ConfigurationSvc.PlayerData player)
             {
                 if (player == null) throw new ArgumentException("Player data should not be null");
                 return new Supervisor(player);
@@ -180,15 +192,49 @@ namespace Arbiter
              }
         }
 
-        static SupervisorsService()
+        private SupervisorsService()
         {
             Supervisor.Initialize();
+            this.supervisorsPool =
+            new ObjectPool<ConfigurationSvc.PlayerData, Supervisor>(CreateSupervisor);
         }
 
-        static Supervisor CreateSupervisor(ConfigurationSvc.PlayerData player)
+        private Supervisor CreateSupervisor(ConfigurationSvc.PlayerData player)
         {
-            return SpervisorFactory(value);
+            return SpervisorFactory(player);
         }
 
+        public Supervisor GetSupervisorFor(ConfigurationSvc.PlayerData player)
+        {
+            return supervisorsPool.GetObjectFor<ConfigurationSvc.PlayerData>(player);
+        }
+    }
+
+
+    public class ObjectPool<I,T>
+    {
+        private ConcurrentBag<T> objects;
+        private Func<I,T> objectGenerator;
+
+        public ObjectPool(Func<I,T> objectGenerator)
+        {
+            if (objectGenerator == null) throw new ArgumentNullException("objectGenerator");
+            objects = new ConcurrentBag<T>();
+            this.objectGenerator = objectGenerator;
+        }
+
+        public T GetObjectFor<I>(I param)
+        {
+            T item;
+            if (objects.TryTake(out item)) return item;
+            
+            var generatedObject=objectGenerator(param);
+            return generatedObject;
+        }
+
+        public void PutObject(T item)
+        {
+            objects.Add(item);
+        }
     }
 }
