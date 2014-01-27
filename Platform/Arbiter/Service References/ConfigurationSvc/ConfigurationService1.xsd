@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://master-pc:2002/Configuration/ConfigurationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="GameGeometry">
     <xs:sequence>
       <xs:element minOccurs="0" name="BallRadius" type="xs:int" />
@@ -13,8 +14,8 @@
       <xs:element minOccurs="0" name="BeforeStartTimeoutLength" type="xs:int" />
       <xs:element minOccurs="0" name="GameStartDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TimeCount" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="TimeLength" type="xs:int" />
-      <xs:element minOccurs="0" name="TimeOutLength" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeLength" type="ser:duration" />
+      <xs:element minOccurs="0" name="TimeOutLength" type="ser:duration" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameTimings" nillable="true" type="tns:GameTimings" />

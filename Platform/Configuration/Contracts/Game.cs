@@ -36,12 +36,12 @@ namespace Configuration.DataContracts
         public int BeforeStartTimeoutLength { get; set; }
 
         [DataMember]
-        public int TimeLength { get; set; }
+        public TimeSpan TimeLength { get; set; }
 
         [DataMember]
         public byte TimeCount { get; set; }
 
         [DataMember]
-        public int TimeOutLength { get; set; }
+        public TimeSpan TimeOutLength { get; set; }
     }
 }

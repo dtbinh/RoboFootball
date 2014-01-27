@@ -20,10 +20,11 @@ namespace Arbiter
         }
 
         public IGameTimer GameTimer { get; private set; }
-
+        public IGameTimer PauseTimer { get; private set; }
         private TimeService()
         {
             GameTimer = new GameTimer();
+            PauseTimer = new GameTimer();
         }
     }
 

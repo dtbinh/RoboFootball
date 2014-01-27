@@ -109,10 +109,10 @@ namespace Arbiter.ConfigurationSvc {
         private byte TimeCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimeLengthField;
+        private System.TimeSpan TimeLengthField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimeOutLengthField;
+        private System.TimeSpan TimeOutLengthField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -164,7 +164,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TimeLength {
+        public System.TimeSpan TimeLength {
             get {
                 return this.TimeLengthField;
             }
@@ -177,7 +177,7 @@ namespace Arbiter.ConfigurationSvc {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TimeOutLength {
+        public System.TimeSpan TimeOutLength {
             get {
                 return this.TimeOutLengthField;
             }
