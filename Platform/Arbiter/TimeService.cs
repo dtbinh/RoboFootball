@@ -1,13 +1,32 @@
-﻿using Arbiter.DataContracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Timers;
+using System.Web;
 
 namespace Arbiter
 {
+    public class TimeService
+    {
+        private static TimeService instance;
+        public static TimeService Instance
+        {
+            get
+            {
+                if (Instance == null) { instance = new TimeService(); }
+                return instance;
+            }
+        }
+
+        public IGameTimer GameTimer { get; private set; }
+
+        private TimeService()
+        {
+            GameTimer = new GameTimer();
+        }
+    }
+
     public interface IGameTimer
     {
         void SetTime(TimeSpan timeSpan);
@@ -15,7 +34,7 @@ namespace Arbiter
         bool Start();
         bool Stop();
 
-        void CallAfter(Func<int, GameStatus> EndTime, int number);
+        void CallAfter(Action EndTime, int number);
     }
 
     public class GameTimer : IGameTimer
@@ -24,8 +43,7 @@ namespace Arbiter
         Stopwatch stopWatch;
         bool inProcess = false;
         TimeSpan timeSpan { get; set; }
-        Func<int, GameStatus> callfunction;
-        int timeNumber;
+        Action callfunction;
 
 
         public void SetTime(TimeSpan timeSpan)
@@ -60,7 +78,7 @@ namespace Arbiter
             return true;
         }
 
-        public void CallAfter(Func<int, GameStatus> callfunction, int number)
+        public void CallAfter(Action callfunction, int number)
         {
             if (inProcess) return;
             this.callfunction = callfunction;
@@ -71,8 +89,9 @@ namespace Arbiter
 
         private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            callfunction(timeNumber);
+            callfunction();
         }
     }
+
 
 }

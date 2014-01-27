@@ -24,20 +24,23 @@ namespace Arbiter.States
             }
         }
 
-        public GameStatus PrepareGame(GameProperties gameProperties)
+        public bool PrepareGame(GameProperties gameProperties)
         {
             var membership = gameProperties.Membership.GetMembership();
-            var supervisors = PlayerSupervisorService.SupervisorFactory(membership).ToList();
+            var supervisors=SupervisorsService.Instance.CreateSupervisorsFor(membership);
+           
             var timings = gameProperties.Timing.GetGameTimings();
             var gametimer = getTimer(timings);
-            context.goNext();
-
-            return new GameStatus
-            {
-                Message = context.CurrentGameState.Description,
-                State = context.CurrentGameState
-            };
         }
+
+        private bool PrepareSupervisors(GameProperties gameProperties)
+        {
+            var membership = gameProperties.Membership.GetMembership();
+            var supervisors = SupervisorsService.Instance.CreateSupervisorsFor(membership);
+            if (supervisors == null || !supervisors.Any()) return false;
+            return false;
+        }
+
 
     }
 }

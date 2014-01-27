@@ -28,7 +28,7 @@ namespace Arbiter
             ConfigurationSvc.PlayerData playerData;
             ObserverSvc.PhysicInfo currentPhysicInfo;
             public bool IsSuspended { get; set; }
-            public bool IsRun { get; set; }
+            public bool IsAlive { get; set; }
             Thread thread;
 
             internal static void Initialize()
@@ -44,7 +44,7 @@ namespace Arbiter
             private Supervisor(ConfigurationSvc.PlayerData player)
             {
                 this.playerData = player;
-                IsRun = true;
+                IsAlive = true;
                 IsSuspended = true;
                 thread = new Thread(this.CheckRules);
                 thread.Start();
@@ -52,7 +52,7 @@ namespace Arbiter
 
             public void CheckRules()
             {
-                while (IsRun)
+                while (IsAlive)
                 {
                     if (IsSuspended) continue;
                     //checking logic
@@ -98,7 +98,7 @@ namespace Arbiter
         {
             foreach (var supervisor in SupervisorToKill)
             {
-                supervisor.IsRun = false;
+                supervisor.IsAlive = false;
                 supervisors.RemoveObject(supervisor);
             }
         }
