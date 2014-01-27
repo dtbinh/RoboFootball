@@ -30,12 +30,6 @@ namespace Configuration.DataContracts
     public class GameTimings
     {
         [DataMember]
-        public DateTime GameStartDate { get; set; }
-
-        [DataMember]
-        public int BeforeStartTimeoutLength { get; set; }
-
-        [DataMember]
         public TimeSpan TimeLength { get; set; }
 
         [DataMember]

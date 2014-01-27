@@ -9,7 +9,6 @@ namespace Arbiter.States
     {
         public void goNext(TimeContext context)
         {
-
         }
 
         public string Description

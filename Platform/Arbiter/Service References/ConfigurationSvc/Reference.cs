@@ -100,12 +100,6 @@ namespace Arbiter.ConfigurationSvc {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BeforeStartTimeoutLengthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime GameStartDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte TimeCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -121,32 +115,6 @@ namespace Arbiter.ConfigurationSvc {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BeforeStartTimeoutLength {
-            get {
-                return this.BeforeStartTimeoutLengthField;
-            }
-            set {
-                if ((this.BeforeStartTimeoutLengthField.Equals(value) != true)) {
-                    this.BeforeStartTimeoutLengthField = value;
-                    this.RaisePropertyChanged("BeforeStartTimeoutLength");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime GameStartDate {
-            get {
-                return this.GameStartDateField;
-            }
-            set {
-                if ((this.GameStartDateField.Equals(value) != true)) {
-                    this.GameStartDateField = value;
-                    this.RaisePropertyChanged("GameStartDate");
-                }
             }
         }
         

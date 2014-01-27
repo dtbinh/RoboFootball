@@ -9,6 +9,8 @@ namespace Arbiter.States
     {
         public void goNext(GameContext context)
         {
+            var robotsAreReady = PrepareRobots(context.gameProperties);
+
             var timeLimboState = StateService.Instance.State<TimeLimboState>();
 
             if (context.timeContext.CurrentTimeState.Equals(timeLimboState))
@@ -22,62 +24,30 @@ namespace Arbiter.States
 
         public string Description
         {
-            get { return "The game process has been started. "+ 
-                          "All supervisors are alive but not active. "+
-                          "Timers are started. "+
-                          "Players are active. " + 
-                          "Wait for the administrator to start first time."; }
+            get
+            {
+                return "The game process has been started. " +
+                        "All supervisors are alive but not active. " +
+                        "Timers are started. " +
+                        "Players are active. " +
+                        "Wait for the administrator to start first time.";
+            }
         }
 
-        private var PrepareRobots(GameProperties gameProperties)
+        private bool PrepareRobots(GameProperties gameProperties)
         {
             var robots = gameProperties.Membership.GetMembership().Teams.SelectMany(t => t.Players.Select(p => p.RobotData));
+            if (!robots.Any(r => !r.IsActive)) return true;
             foreach (var robot in robots)
             {
                 robot.IsActive = true;
+                throw new NotImplementedException("Here should be call to Communication module with special activation code for robot with special id!");
+                throw new NotImplementedException("only in a case if robto is activated returned true!!");
+                return false;
             }
-
-        }
-
-
-
-        private void NextStep(GameContext context)
-        {
-            var timeLimboState = StateService.Instance.State<TimeLimboState>();
-
-            if (context.timeContext.CurrentTimeState.Equals(timeLimboState))
-                StateService.Instance.SetStateTo<GameEndedState>(context);
-            else
-            {
-                context.timeContext.goNext();
-                StateService.Instance.SetStateTo<GameInProgressState>(context);
-            }
-        }
-
-
-        public bool PrepareGame(GameProperties gameProperties)
-        {
-            var robots = ActivateRobotsOfPalyers(gameProperties);
-            var pauseTimer = TimeService.Instance.PauseTimer;
-            var difference= DateTime.Now.Subtract(gameProperties.Timing.GetGameTimings().GameStartDate);
-            pauseTimer.SetTime(difference);
-            pauseTimer.CallAfter(NextStep);
-
-
-            var timers = PrepareTimers(gameProperties);
-
-            if (supervisors != null && timers != null) return true;
             return false;
-
         }
 
-        private IList<SupervisorsService.Supervisor> PrepareSupervisors(GameProperties gameProperties)
-        {
-            var membership = gameProperties.Membership.GetMembership();
-            var supervisors = SupervisorsService.Instance.CreateSupervisorsFor(membership);
-            if (supervisors != null && supervisors.Any()) return supervisors;
-            return null;
-        }
 
         private Tuple<IGameTimer, IGameTimer> PrepareTimers(GameProperties gameProperties)
         {

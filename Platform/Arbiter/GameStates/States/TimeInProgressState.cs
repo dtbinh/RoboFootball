@@ -9,7 +9,12 @@ namespace Arbiter.States
     {
         public void goNext(TimeContext context)
         {
-            StateService.Instance.SetStateTo<TimeEndedState>(context);
+            activateSupervisors(context.gameProperties);
+            TimeService.Instance.GameTimer.CallAfter(() =>
+            {
+                StateService.Instance.SetStateTo<TimeEndedState>(context);
+            });
+            TimeService.Instance.GameTimer.Start();
         }
 
         public string Description
@@ -21,6 +26,13 @@ namespace Arbiter.States
                         "Timers are started. " +
                         "Players are active. ";
             }
+        }
+
+        private void activateSupervisors(GameProperties gameProperties)
+        {
+            var players = gameProperties.Membership.GetMembership().Teams.SelectMany(t => t.Players);
+            var supervisors = players.Select(p => SupervisorsService.Instance.GetSupervisorFor(p));
+            SupervisorsService.Instance.StartSupervisors(supervisors);
         }
     }
 }

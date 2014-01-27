@@ -11,8 +11,6 @@
   <xs:element name="GameGeometry" nillable="true" type="tns:GameGeometry" />
   <xs:complexType name="GameTimings">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BeforeStartTimeoutLength" type="xs:int" />
-      <xs:element minOccurs="0" name="GameStartDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TimeCount" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="TimeLength" type="ser:duration" />
       <xs:element minOccurs="0" name="TimeOutLength" type="ser:duration" />

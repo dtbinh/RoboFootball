@@ -11,13 +11,14 @@ namespace Arbiter.States
         public IGameState CurrentGameState { set; get; }
         public TimeContext timeContext { get; private set; }
 
-        public GameProperties gameProperties { get; private set; }
+        public GameProperties gameProperties { get; private  set; }
 
         public GameContext(TimeContext timeContext)
         {
             StateService.Instance.SetStateTo<NotAGameState>(this);
             if (timeContext == null) throw new ArgumentException("TimeContext could not be null");
             this.timeContext = timeContext;
+            gameProperties = timeContext.gameProperties;
         }
         public void goNext()
         {
@@ -30,6 +31,7 @@ namespace Arbiter.States
         public ITimeState CurrentTimeState { get; set; }
         public byte currentTime { get; private set; }
         public  byte timeCount{get; private set;}
+        public GameProperties gameProperties { get; set; }
         public TimeContext(byte timeCount)
         {
             if (timeCount>=0) this.timeCount=timeCount;

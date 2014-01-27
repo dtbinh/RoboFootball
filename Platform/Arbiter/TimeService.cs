@@ -35,7 +35,7 @@ namespace Arbiter
         bool Start();
         bool Stop();
 
-        void CallAfter(Action EndTime, int number);
+        void CallAfter(Action EndTime);
     }
 
     public class GameTimer : IGameTimer
