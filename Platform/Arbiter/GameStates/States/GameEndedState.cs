@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Arbiter.CommunicationSvc;
 
 namespace Arbiter.States
 {
@@ -11,7 +12,7 @@ namespace Arbiter.States
         {
             disactivateRobots(context.GameProperties);
             KillAllSupervisors(context.GameProperties);
-            StateService.Instance.SetStateTo<NotAGameState>(context);
+           // StateService.Instance.SetStateTo<NotAGameState>(context);
         }
 
         public string Description
@@ -26,14 +27,22 @@ namespace Arbiter.States
             }
         }
 
-        void disactivateRobots(GameProperties gameProperties)
+        bool disactivateRobots(GameProperties gameProperties)
         {
             var robots = gameProperties.Membership.GetMembership().Teams.SelectMany(t => t.Players.Select(x => x.RobotData));
             foreach (var robot in robots)
             {
                 robot.IsActive = false;
-                throw new NotImplementedException("here we should call robot with communication service with special code");
+
+                //TODO:Here should be call to Communication module with special 
+                //TODO:disactivation code for robot with special id! 
+                //TODO:only in a case if robto is disactivates returned true!!"
+                return gameProperties.Commander.AddCommand(new Command(/*Robot with id .. DISACTIVATE!!*/));
+                return gameProperties.Commander.AddCommand(new Command(/*Robot with id .. Are you DISactivated?*/));
+
             }
+
+            return true;
         }
 
         void KillAllSupervisors(GameProperties gameProperties)

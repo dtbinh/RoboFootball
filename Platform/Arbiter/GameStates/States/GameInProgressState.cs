@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Arbiter.CommunicationSvc;
 
 namespace Arbiter.States
 {
@@ -17,8 +18,8 @@ namespace Arbiter.States
                 StateService.Instance.SetStateTo<GameEndedState>(context);
             else
             {
-                context.TimeContext.GoNext();
                 StateService.Instance.SetStateTo<GameInProgressState>(context);
+                context.TimeContext.GoNext();
             }
         }
 
@@ -41,8 +42,11 @@ namespace Arbiter.States
             foreach (var robot in robots)
             {
                 robot.IsActive = true;
-
-                throw new NotImplementedException("Here should be call to Communication module with special activation code for robot with special id!"+" only in a case if robto is activated returned true!!");
+                //TODO:Here should be call to Communication module with special 
+                //TODO:activation code for robot with special id! 
+                //TODO:only in a case if robto is activated returned true!!"
+                return gameProperties.Commander.AddCommand(new Command(/*Robot with id .. ACTIVATE!!*/));
+                return gameProperties.Commander.AddCommand(new Command(/*Robot with id .. Are you activated?*/));
             }
             return false;
         }
