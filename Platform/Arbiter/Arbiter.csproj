@@ -60,6 +60,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArbiterService.svc" />
+    <Content Include="Service References\CommunicationSvc\CommunicationService.disco" />
+    <Content Include="Service References\CommunicationSvc\configuration91.svcinfo" />
+    <Content Include="Service References\CommunicationSvc\configuration.svcinfo" />
+    <Content Include="Service References\CommunicationSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Service References\ConfigurationSvc\Arbiter.ConfigurationSvc.GameGeometry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -78,6 +85,16 @@
     <Content Include="Service References\ConfigurationSvc\Arbiter.ConfigurationSvc.TeamMembership.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\CommunicationSvc\CommunicationService.wsdl" />
+    <None Include="Service References\CommunicationSvc\CommunicationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommunicationSvc\CommunicationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommunicationSvc\CommunicationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ConfigurationSvc\ConfigurationService.disco" />
     <None Include="Service References\ConfigurationSvc\configuration91.svcinfo" />
     <None Include="Service References\ConfigurationSvc\configuration.svcinfo" />
@@ -115,6 +132,11 @@
     <Compile Include="GameStates\IState.cs" />
     <Compile Include="GameStates\States\GameEndedState.cs" />
     <Compile Include="GameStates\States\GameInProgressState.cs" />
+    <Compile Include="Service References\CommunicationSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="StateService.cs" />
     <Compile Include="GameStates\ITimeState.cs" />
     <Compile Include="GameStates\States\NotAGameState.cs" />
@@ -173,6 +195,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CommunicationSvc\" />
     <WCFMetadataStorage Include="Service References\ConfigurationSvc\" />
     <WCFMetadataStorage Include="Service References\LoggerSvc\" />
     <WCFMetadataStorage Include="Service References\ObserverSvc\" />

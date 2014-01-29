@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using Arbiter.CommunicationSvc;
 using Arbiter.ConfigurationSvc;
 using Arbiter.LoggerSvc;
 using Arbiter.ServiceContracts;
@@ -19,7 +20,8 @@ namespace Arbiter
             gameProperties = new GameProperties(new MembershipManagerClient(), 
                                                 new TimingManagerClient(),
                                                 new NotificationManagerClient( new InstanceContext(this)), 
-                                                new LogManagerClient());
+                                                new LogManagerClient(),
+                                                new CommandManagerClient());
             timeContext = new TimeContext(gameProperties);
             gameContext = new GameContext(timeContext);
         }

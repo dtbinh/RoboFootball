@@ -41,6 +41,7 @@ namespace Arbiter.States
             foreach (var robot in robots)
             {
                 robot.IsActive = true;
+
                 throw new NotImplementedException("Here should be call to Communication module with special activation code for robot with special id!"+" only in a case if robto is activated returned true!!");
             }
             return false;

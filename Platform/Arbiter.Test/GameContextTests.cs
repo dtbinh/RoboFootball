@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Arbiter.CommunicationSvc;
 using Arbiter.ConfigurationSvc;
 using Arbiter.LoggerSvc;
 using Arbiter.States;
@@ -19,6 +20,7 @@ namespace Arbiter.Test
         private Mock<ITimingManager> timingManager;
         private Mock<INotificationManager> notificationManager;
         private Mock<ILogManager> logManager;
+        private Mock<ICommandManager> commandManager;
         private TimeContext timeContext;
         private GameContext gameContext;
         private GameProperties gameProperties;
@@ -30,11 +32,13 @@ namespace Arbiter.Test
             timingManager = new Mock<ITimingManager>();
             notificationManager = new Mock<INotificationManager>();
             logManager = new Mock<ILogManager>();
+            commandManager = new Mock<ICommandManager>();
 
             gameProperties = new GameProperties(membershipManager.Object,
                                                 timingManager.Object,
                                                 notificationManager.Object,
-                                                logManager.Object);
+                                                logManager.Object
+                                                ,commandManager.Object);
 
         }
 

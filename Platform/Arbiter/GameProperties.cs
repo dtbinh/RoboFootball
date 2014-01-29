@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Arbiter.CommunicationSvc;
 using Arbiter.ConfigurationSvc;
 using Arbiter.LoggerSvc;
 
@@ -15,11 +12,12 @@ namespace Arbiter
         public ITimingManager Timing { get; private  set; }
         public INotificationManager Notification { get; private set; }
         public ILogManager Logger { get; private set; }
+        public ICommandManager Commander { get; private set; }
 
         public GameProperties(IMembershipManager membership, 
                               ITimingManager timing, 
                               INotificationManager notification, 
-                              ILogManager logger)
+                              ILogManager logger, ICommandManager commander)
         {
 
             //TODO: for each set!
@@ -30,6 +28,7 @@ namespace Arbiter
             Timing = timing;
             Notification = notification;
             Logger = logger;
+            Commander = commander;
         }
     }
 

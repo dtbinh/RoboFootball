@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="90faaa4a-07ec-4e5e-85c5-7aa13c3e557d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2002/Communication/CommunicationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CommunicationService.wsdl" MetadataType="Wsdl" ID="680f7dcf-9181-4748-a256-d58b8c798b2c" SourceId="1" SourceUrl="http://master-pc:2002/Communication/CommunicationService.svc?wsdl" />
+    <MetadataFile FileName="CommunicationService.xsd" MetadataType="Schema" ID="dadb57d7-1913-4c43-a1d9-82a55453401e" SourceId="1" SourceUrl="http://master-pc:2002/Communication/CommunicationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CommunicationService1.xsd" MetadataType="Schema" ID="61a703f0-d271-4d2a-9b11-fd3e66ec53a3" SourceId="1" SourceUrl="http://master-pc:2002/Communication/CommunicationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CommunicationService2.xsd" MetadataType="Schema" ID="5f204308-0054-4ce7-adbe-3d9910665584" SourceId="1" SourceUrl="http://master-pc:2002/Communication/CommunicationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CommunicationService.disco" MetadataType="Disco" ID="d5f5bc9f-57c8-411c-9f20-62fa5d76c28a" SourceId="1" SourceUrl="http://master-pc:2002/Communication/CommunicationService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
