@@ -9,15 +9,15 @@ namespace Arbiter.States
     {
         public void goNext(GameContext context)
         {
-            var robotsAreReady = PrepareRobots(context.gameProperties);
+            var robotsAreReady = PrepareRobots(context.GameProperties);
 
             var timeLimboState = StateService.Instance.State<TimeLimboState>();
 
-            if (context.timeContext.CurrentTimeState.Equals(timeLimboState))
+            if (context.TimeContext.CurrentTimeState.Equals(timeLimboState))
                 StateService.Instance.SetStateTo<GameEndedState>(context);
             else
             {
-                context.timeContext.goNext();
+                context.TimeContext.GoNext();
                 StateService.Instance.SetStateTo<GameInProgressState>(context);
             }
         }
@@ -41,9 +41,7 @@ namespace Arbiter.States
             foreach (var robot in robots)
             {
                 robot.IsActive = true;
-                throw new NotImplementedException("Here should be call to Communication module with special activation code for robot with special id!");
-                throw new NotImplementedException("only in a case if robto is activated returned true!!");
-                return false;
+                throw new NotImplementedException("Here should be call to Communication module with special activation code for robot with special id!"+" only in a case if robto is activated returned true!!");
             }
             return false;
         }

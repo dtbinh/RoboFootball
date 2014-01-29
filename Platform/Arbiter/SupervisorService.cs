@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Web;
 
 namespace Arbiter
 {
@@ -26,7 +24,7 @@ namespace Arbiter
         public class Supervisor
         {
             ConfigurationSvc.PlayerData playerData;
-            ObserverSvc.PhysicInfo currentPhysicInfo;
+            //ObserverSvc.PhysicInfo currentPhysicInfo;
             public bool IsSuspended { get; set; }
             public bool IsAlive { get; set; }
             Thread thread;
@@ -55,6 +53,7 @@ namespace Arbiter
                 while (IsAlive)
                 {
                     if (IsSuspended) continue;
+                    //var acc=currentPhysicInfo.Acceleration;
                     //checking logic
                 }
             }
@@ -123,8 +122,8 @@ namespace Arbiter
 
     class ObjectContainer<I,T>
     {
-        private ISet<T> objects;
-        private Func<I, T> objectGenerator;
+        private readonly ISet<T> objects;
+        private readonly Func<I, T> objectGenerator;
 
         public ObjectContainer(Func<I, T> objectGenerator)
         {
@@ -133,12 +132,11 @@ namespace Arbiter
             this.objectGenerator = objectGenerator;
         }
 
-        public T GetObjectFor<I>(I param)
+        public T GetObjectFor<TP>(TP param) where TP:I
         {
             var generated = objectGenerator(param);
             if (!objects.Contains(generated)) objects.Add(generated);
             return generated;
-            throw new System.NotImplementedException("should return object "); 
         }
 
         public bool RemoveObject(T item)

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Timers;
-using System.Web;
 
 namespace Arbiter
 {
@@ -35,7 +32,7 @@ namespace Arbiter
         bool Start();
         bool Stop();
 
-        void CallAfter(Action EndTime);
+        void CallAfter(Action action);
     }
 
     public class GameTimer : IGameTimer
@@ -79,13 +76,11 @@ namespace Arbiter
             return true;
         }
 
-        public void CallAfter(Action callfunction, int number)
+        public void CallAfter(Action action)
         {
             if (inProcess) return;
-            this.callfunction = callfunction;
-            this.timeNumber = number;
+            this.callfunction = action;
             timer.Elapsed += timer_Elapsed;
-
         }
 
         private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

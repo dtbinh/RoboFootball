@@ -9,8 +9,8 @@ namespace Arbiter.States
     {
         public void goNext(GameContext context)
         {
-            disactivateRobots(context.gameProperties);
-            KillAllSupervisors(context.gameProperties);
+            disactivateRobots(context.GameProperties);
+            KillAllSupervisors(context.GameProperties);
             StateService.Instance.SetStateTo<NotAGameState>(context);
         }
 

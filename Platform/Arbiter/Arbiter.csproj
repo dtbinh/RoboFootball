@@ -112,7 +112,6 @@
     <Compile Include="Contracts\GameStatus.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="GameProperties.cs" />
-    <Compile Include="GameProvider.cs" />
     <Compile Include="GameStates\IState.cs" />
     <Compile Include="GameStates\States\GameEndedState.cs" />
     <Compile Include="GameStates\States\GameInProgressState.cs" />
@@ -124,7 +123,6 @@
     <Compile Include="GameStates\States\TimeEndedState.cs" />
     <Compile Include="GameStates\States\TimeLimboState.cs" />
     <Compile Include="GameStates\States\TimeInProgressState.cs" />
-    <Compile Include="IGameProvider.cs" />
     <Compile Include="GameStates\IGameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ConfigurationSvc\Reference.cs">

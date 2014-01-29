@@ -9,7 +9,7 @@ namespace Arbiter.States
     {
         public void goNext(TimeContext context)
         {
-            if (context.timeCount != 0)
+            if (context.TimeCount != 0)
                 StateService.Instance.SetStateTo<TimeInProgressState>(context);
             else
                 StateService.Instance.SetStateTo<TimeLimboState>(context);

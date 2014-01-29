@@ -9,7 +9,7 @@ namespace Arbiter.States
     {
         public void goNext(GameContext context)
         {
-            if (PrepareGame(context.gameProperties))
+            if (PrepareGame(context.GameProperties))
             StateService.Instance.SetStateTo<GameInProgressState>(context);
             else
             StateService.Instance.SetStateTo<NotAGameState>(context);

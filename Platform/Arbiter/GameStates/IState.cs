@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arbiter.States
 {
-    interface IState
+    public interface IState
     {
         string Description { get; }
     }

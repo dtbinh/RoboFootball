@@ -9,11 +9,11 @@ namespace Arbiter.States
     {
         public void goNext(TimeContext context)
         {
-            disActivateSupervisors(context.gameProperties);
+            disActivateSupervisors(context.GameProperties);
             TimeService.Instance.PauseTimer.CallAfter(() =>
             {
-                context.currentTimeInc();
-                if (context.currentTime <= context.timeCount)
+                context.CurrentTimeInc();
+                if (context.CurrentTime <= context.TimeCount)
                     StateService.Instance.SetStateTo<TimeInProgressState>(context);
                 else
                     StateService.Instance.SetStateTo<TimeLimboState>(context);

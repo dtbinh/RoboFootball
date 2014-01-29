@@ -1,6 +1,4 @@
 using Configuration.DataContracts;
-using System;
-using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace Configuration.ServiceContracts

@@ -1,48 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Arbiter.States
 {
 
-    class GameContext
+    public class GameContext
     {
         public IGameState CurrentGameState { set; get; }
-        public TimeContext timeContext { get; private set; }
+        public TimeContext TimeContext { get; private set; }
 
-        public GameProperties gameProperties { get; private  set; }
+        public GameProperties GameProperties { get; private  set; }
 
         public GameContext(TimeContext timeContext)
         {
             StateService.Instance.SetStateTo<NotAGameState>(this);
             if (timeContext == null) throw new ArgumentException("TimeContext could not be null");
-            this.timeContext = timeContext;
-            gameProperties = timeContext.gameProperties;
+            this.TimeContext = timeContext;
+            GameProperties = timeContext.GameProperties;
         }
-        public void goNext()
+        public void GoNext()
         {
             CurrentGameState.goNext(this);
         }
     }
 
-    class TimeContext 
+    public class TimeContext 
     {
         public ITimeState CurrentTimeState { get; set; }
-        public byte currentTime { get; private set; }
-        public  byte timeCount{get; private set;}
-        public GameProperties gameProperties { get; set; }
+        public byte CurrentTime { get; private set; }
+        public  byte TimeCount{get; private set;}
+        public GameProperties GameProperties { get; set; }
         public TimeContext(byte timeCount)
         {
-            if (timeCount>=0) this.timeCount=timeCount;
-            else timeCount=0;
+            TimeCount=timeCount;
             StateService.Instance.SetStateTo<NotATimeState>(this);
         }
-        public void goNext()
+
+        public void GoNext()
         {
             CurrentTimeState.goNext(this);
         }
-        public void currentTimeInc() {currentTime++; }
+        public void CurrentTimeInc() {CurrentTime++; }
 
     }
 

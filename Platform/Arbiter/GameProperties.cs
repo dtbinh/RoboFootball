@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Arbiter
 {
-    class GameProperties
+    public class GameProperties
     {
         //TODO: for each set!
         //TODO: test if this services are available;

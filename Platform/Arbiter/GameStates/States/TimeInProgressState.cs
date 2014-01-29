@@ -9,11 +9,8 @@ namespace Arbiter.States
     {
         public void goNext(TimeContext context)
         {
-            activateSupervisors(context.gameProperties);
-            TimeService.Instance.GameTimer.CallAfter(() =>
-            {
-                StateService.Instance.SetStateTo<TimeEndedState>(context);
-            });
+            activateSupervisors(context.GameProperties);
+            TimeService.Instance.GameTimer.CallAfter(() => StateService.Instance.SetStateTo<TimeEndedState>(context));
             TimeService.Instance.GameTimer.Start();
         }
 

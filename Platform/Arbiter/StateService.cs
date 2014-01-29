@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Arbiter.States
 {
@@ -28,7 +26,6 @@ namespace Arbiter.States
                 {typeof(GameInProgressState),Singleton<GameInProgressState>.Instance},
                 {typeof(GameEndedState),Singleton<GameEndedState>.Instance},
                 {typeof(GamePreparationState),Singleton<GamePreparationState>.Instance},
-                {typeof(GameSuspendedState),Singleton<GameSuspendedState>.Instance},
 
                 {typeof(NotATimeState),Singleton<NotATimeState>.Instance},
                 {typeof(TimeInProgressState),Singleton<TimeInProgressState>.Instance},

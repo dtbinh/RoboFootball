@@ -12,12 +12,14 @@ namespace Arbiter.ServiceContracts
     interface IGameProcessManager
     {
         [OperationContract]
-        public GameStatus StartGame();
+        GameStatus ActivateGame();
         [OperationContract]
-        public GameStatus StopGame();
+        GameStatus StartGame();
         [OperationContract]
-        public GameStatus SuspendGame();
+        GameStatus StopGame();
         [OperationContract]
-        public GameStatus ResumeGame();
+        GameStatus SuspendGame();
+        [OperationContract]
+        GameStatus ResumeGame();
     }
 }
