@@ -20,7 +20,7 @@ namespace Arbiter
                                                 new TimingManagerClient(),
                                                 new NotificationManagerClient( new InstanceContext(this)), 
                                                 new LogManagerClient());
-            timeContext = new TimeContext(gameProperties.Timing.GetGameTimings().TimeCount);
+            timeContext = new TimeContext(gameProperties);
             gameContext = new GameContext(timeContext);
         }
 

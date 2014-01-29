@@ -430,9 +430,6 @@ namespace Arbiter.ConfigurationSvc {
         private byte IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte TeamIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -454,19 +451,6 @@ namespace Arbiter.ConfigurationSvc {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }

@@ -59,7 +59,6 @@
   <xs:complexType name="UnitData">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
     </xs:sequence>
   </xs:complexType>

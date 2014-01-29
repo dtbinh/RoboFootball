@@ -9,11 +9,7 @@ namespace Arbiter
         private static TimeService instance;
         public static TimeService Instance
         {
-            get
-            {
-                if (Instance == null) { instance = new TimeService(); }
-                return instance;
-            }
+            get { return instance ?? (instance = new TimeService()); }
         }
 
         public IGameTimer GameTimer { get; private set; }
@@ -48,8 +44,7 @@ namespace Arbiter
         {
             if (inProcess) return;
             this.timeSpan = timeSpan;
-            timer = new System.Timers.Timer();
-            timer.Interval = (int)timeSpan.TotalMilliseconds;
+            timer = new Timer {Interval = (int) timeSpan.TotalMilliseconds};
             stopWatch = new Stopwatch();
         }
 
@@ -83,7 +78,7 @@ namespace Arbiter
             timer.Elapsed += timer_Elapsed;
         }
 
-        private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             callfunction();
         }

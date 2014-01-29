@@ -10,11 +10,7 @@ namespace Arbiter
         private static SupervisorsService instance;
         public static SupervisorsService Instance
         {
-            get
-            {
-                if (Instance == null) { instance = new SupervisorsService(); }
-                return instance;
-            }
+            get { return instance ?? (instance = new SupervisorsService()); }
         }
 
 

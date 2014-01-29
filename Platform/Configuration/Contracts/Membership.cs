@@ -49,9 +49,6 @@ namespace Configuration.DataContracts
 
         [DataMember]
         public byte TeamId { get; set; }
-
-        [DataMember]
-        public bool IsActive { get; set; }
     }
 
     [DataContract]

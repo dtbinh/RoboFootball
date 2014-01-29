@@ -10,14 +10,10 @@ namespace Arbiter.States
 
         public static StateService Instance
         {
-            get
-            {
-                if (Instance == null) { instance = new StateService(); } 
-            return instance; 
-            } 
+            get { return instance ?? (instance = new StateService()); }
         }
 
-        IDictionary<Type, object> states ;
+        readonly IDictionary<Type, object> states ;
         
         private StateService()
         {
@@ -41,15 +37,15 @@ namespace Arbiter.States
             return state; 
         }
 
-        public void SetStateTo<S>(GameContext context) where S : IGameState
+        public void SetStateTo<TS>(GameContext context) where TS : IGameState
         {
-            var state = State<S>();
+            var state = State<TS>();
             context.CurrentGameState = state;
         }
 
-        public void SetStateTo<S>(TimeContext context) where S : ITimeState
+        public void SetStateTo<TS>(TimeContext context) where TS : ITimeState
         {
-            var state = State<S>();
+            var state = State<TS>();
             context.CurrentTimeState = state;
         }
     }

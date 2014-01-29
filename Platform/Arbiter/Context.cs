@@ -28,10 +28,11 @@ namespace Arbiter.States
         public ITimeState CurrentTimeState { get; set; }
         public byte CurrentTime { get; private set; }
         public  byte TimeCount{get; private set;}
-        public GameProperties GameProperties { get; set; }
-        public TimeContext(byte timeCount)
+        public GameProperties GameProperties { get; private set; }
+        public TimeContext(GameProperties gameProperties)
         {
-            TimeCount=timeCount;
+            GameProperties = gameProperties;
+            TimeCount = gameProperties.Timing.GetGameTimings().TimeCount;
             StateService.Instance.SetStateTo<NotATimeState>(this);
         }
 
