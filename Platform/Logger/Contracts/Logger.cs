@@ -15,21 +15,21 @@ namespace Logger.ServiceContracts
 
     }
 
-    [ServiceContract(CallbackContract = typeof(IStatusNotificationCallBack))]
-    public interface IStatusMessageLogger
-    {
-
-        [OperationContract]
-        void SubscribeForStatusMessages();
-
-        // true when all teams are commited and time of testing ended
-        [OperationContract]
-        void ShowStatusMessage(string message);
-    }
-
-    public interface IStatusNotificationCallBack
-    {
-        [OperationContract(IsOneWay = true)]
-        void OnShowStatusMessage(string message);
-    }
+//    [ServiceContract(CallbackContract = typeof(IStatusNotificationCallBack))]
+//    public interface IStatusMessageLogger
+//    {
+//
+//        [OperationContract]
+//        void SubscribeForStatusMessages();
+//
+//        // true when all teams are commited and time of testing ended
+//        [OperationContract]
+//        void ShowStatusMessage(string message);
+//    }
+//
+//    public interface IStatusNotificationCallBack
+//    {
+//        [OperationContract(IsOneWay = true)]
+//        void OnShowStatusMessage(string message);
+//    }
 }

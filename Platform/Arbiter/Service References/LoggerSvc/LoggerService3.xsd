@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://master-pc:2002/Logger/LoggerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:complexType name="ControllCenterData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UnitData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ControllCenterData" nillable="true" type="tns:ControllCenterData" />
+  <xs:complexType name="UnitData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnitData" nillable="true" type="tns:UnitData" />
   <xs:complexType name="PlayerData">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:UnitData">
@@ -17,19 +32,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PlayerData" nillable="true" type="tns:PlayerData" />
-  <xs:complexType name="UnitData">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:unsignedByte" />
-      <xs:element minOccurs="0" name="TeamId" type="xs:unsignedByte" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="UnitData" nillable="true" type="tns:UnitData" />
-  <xs:complexType name="ControllCenterData">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:UnitData">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ControllCenterData" nillable="true" type="tns:ControllCenterData" />
 </xs:schema>

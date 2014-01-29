@@ -8,24 +8,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameLog" nillable="true" type="tns:GameLog" />
-  <xs:complexType name="PlayerLog">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:GameLog">
-        <xs:sequence>
-          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="PlayerData" nillable="true" type="q1:PlayerData" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PlayerLog" nillable="true" type="tns:PlayerLog" />
   <xs:complexType name="ControllCenterLog">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:GameLog">
         <xs:sequence>
-          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="ControllCenterData" nillable="true" type="q2:ControllCenterData" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="ControllCenterData" nillable="true" type="q1:ControllCenterData" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ControllCenterLog" nillable="true" type="tns:ControllCenterLog" />
+  <xs:complexType name="PlayerLog">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GameLog">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Configuration.DataContracts" minOccurs="0" name="PlayerData" nillable="true" type="q2:PlayerData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlayerLog" nillable="true" type="tns:PlayerLog" />
 </xs:schema>

@@ -17,8 +17,8 @@ namespace Arbiter.LoggerSvc {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GameLog", Namespace="http://schemas.datacontract.org/2004/07/Logger.DataContracts")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.PlayerLog))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.ControllCenterLog))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.PlayerLog))]
     public partial class GameLog : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -78,6 +78,29 @@ namespace Arbiter.LoggerSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ControllCenterLog", Namespace="http://schemas.datacontract.org/2004/07/Logger.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class ControllCenterLog : Arbiter.LoggerSvc.GameLog {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Arbiter.LoggerSvc.ControllCenterData ControllCenterDataField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Arbiter.LoggerSvc.ControllCenterData ControllCenterData {
+            get {
+                return this.ControllCenterDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ControllCenterDataField, value) != true)) {
+                    this.ControllCenterDataField = value;
+                    this.RaisePropertyChanged("ControllCenterData");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerLog", Namespace="http://schemas.datacontract.org/2004/07/Logger.DataContracts")]
     [System.SerializableAttribute()]
     public partial class PlayerLog : Arbiter.LoggerSvc.GameLog {
@@ -101,23 +124,70 @@ namespace Arbiter.LoggerSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ControllCenterLog", Namespace="http://schemas.datacontract.org/2004/07/Logger.DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ControllCenterData", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
     [System.SerializableAttribute()]
-    public partial class ControllCenterLog : Arbiter.LoggerSvc.GameLog {
+    public partial class ControllCenterData : Arbiter.LoggerSvc.UnitData {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UnitData", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.PlayerData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.ControllCenterData))]
+    public partial class UnitData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Arbiter.LoggerSvc.ControllCenterData ControllCenterDataField;
+        private byte IdField;
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Arbiter.LoggerSvc.ControllCenterData ControllCenterData {
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte TeamIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
-                return this.ControllCenterDataField;
+                return this.extensionDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.ControllCenterDataField, value) != true)) {
-                    this.ControllCenterDataField = value;
-                    this.RaisePropertyChanged("ControllCenterData");
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte TeamId {
+            get {
+                return this.TeamIdField;
+            }
+            set {
+                if ((this.TeamIdField.Equals(value) != true)) {
+                    this.TeamIdField = value;
+                    this.RaisePropertyChanged("TeamId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
@@ -241,76 +311,6 @@ namespace Arbiter.LoggerSvc {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UnitData", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.ControllCenterData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Arbiter.LoggerSvc.PlayerData))]
-    public partial class UnitData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte TeamIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte TeamId {
-            get {
-                return this.TeamIdField;
-            }
-            set {
-                if ((this.TeamIdField.Equals(value) != true)) {
-                    this.TeamIdField = value;
-                    this.RaisePropertyChanged("TeamId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ControllCenterData", Namespace="http://schemas.datacontract.org/2004/07/Configuration.DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class ControllCenterData : Arbiter.LoggerSvc.UnitData {
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LoggerSvc.ILogManager")]
     public interface ILogManager {
@@ -355,75 +355,6 @@ namespace Arbiter.LoggerSvc {
         
         public System.Threading.Tasks.Task AddLogAsync(Arbiter.LoggerSvc.GameLog log) {
             return base.Channel.AddLogAsync(log);
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LoggerSvc.IStatusMessageLogger", CallbackContract=typeof(Arbiter.LoggerSvc.IStatusMessageLoggerCallback))]
-    public interface IStatusMessageLogger {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessages", ReplyAction="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessagesResponse")]
-        void SubscribeForStatusMessages();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessages", ReplyAction="http://tempuri.org/IStatusMessageLogger/SubscribeForStatusMessagesResponse")]
-        System.Threading.Tasks.Task SubscribeForStatusMessagesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/ShowStatusMessage", ReplyAction="http://tempuri.org/IStatusMessageLogger/ShowStatusMessageResponse")]
-        void ShowStatusMessage(string message);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatusMessageLogger/ShowStatusMessage", ReplyAction="http://tempuri.org/IStatusMessageLogger/ShowStatusMessageResponse")]
-        System.Threading.Tasks.Task ShowStatusMessageAsync(string message);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IStatusMessageLoggerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatusMessageLogger/OnShowStatusMessage")]
-        void OnShowStatusMessage(string message);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IStatusMessageLoggerChannel : Arbiter.LoggerSvc.IStatusMessageLogger, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StatusMessageLoggerClient : System.ServiceModel.DuplexClientBase<Arbiter.LoggerSvc.IStatusMessageLogger>, Arbiter.LoggerSvc.IStatusMessageLogger {
-        
-        public StatusMessageLoggerClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
-        }
-        
-        public StatusMessageLoggerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
-        }
-        
-        public StatusMessageLoggerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
-        }
-        
-        public StatusMessageLoggerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
-        }
-        
-        public StatusMessageLoggerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
-        }
-        
-        public void SubscribeForStatusMessages() {
-            base.Channel.SubscribeForStatusMessages();
-        }
-        
-        public System.Threading.Tasks.Task SubscribeForStatusMessagesAsync() {
-            return base.Channel.SubscribeForStatusMessagesAsync();
-        }
-        
-        public void ShowStatusMessage(string message) {
-            base.Channel.ShowStatusMessage(message);
-        }
-        
-        public System.Threading.Tasks.Task ShowStatusMessageAsync(string message) {
-            return base.Channel.ShowStatusMessageAsync(message);
         }
     }
 }

@@ -13,33 +13,4 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SubscribeForStatusMessages">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SubscribeForStatusMessagesResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShowStatusMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShowStatusMessageResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="OnShowStatusMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
 </xs:schema>

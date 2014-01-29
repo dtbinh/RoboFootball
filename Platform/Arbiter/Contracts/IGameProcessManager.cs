@@ -14,9 +14,7 @@ namespace Arbiter.ServiceContracts
         [OperationContract]
         GameStatus ActivateGame();
         [OperationContract]
-        GameStatus StartGame();
-        [OperationContract]
-        GameStatus StopGame();
+        GameStatus KillGame();
         [OperationContract]
         GameStatus SuspendGame();
         [OperationContract]
