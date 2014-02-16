@@ -5,13 +5,21 @@ using System.Web;
 
 namespace Arbiter.States
 {
-    public class TimeInProgressState:ITimeState
+    public class TimeInProgressState : ITimeState
     {
         public void goNext(TimeContext context)
         {
             activateSupervisors(context.GameProperties);
-            TimeService.Instance.GameTimer.CallAfter(() => StateService.Instance.SetStateTo<TimeEndedState>(context));
-            TimeService.Instance.GameTimer.Start();
+            var timer = TimeService.Instance.GameTimer;
+            var timeLength = context.GameProperties.Timing.GetGameTimings().TimeLength;
+            timer.SetTime(timeLength);
+            timer.CallAfter(() =>
+                                {
+                                   
+                                    StateService.Instance.SetStateTo<TimeEndedState>(context);
+                                }
+                );
+            timer.Start();
         }
 
         public string Description

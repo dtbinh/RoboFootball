@@ -13,11 +13,9 @@ namespace Arbiter
         }
 
         public IGameTimer GameTimer { get; private set; }
-        public IGameTimer PauseTimer { get; private set; }
         private TimeService()
         {
             GameTimer = new GameTimer();
-            PauseTimer = new GameTimer();
         }
     }
 
@@ -64,7 +62,6 @@ namespace Arbiter
 
         public bool Stop()
         {
-            if (!inProcess) return false;
             timer.Stop();
             stopWatch.Stop();
             inProcess = false;
@@ -80,9 +77,8 @@ namespace Arbiter
 
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            this.Stop();
             callfunction();
         }
     }
-
-
 }

@@ -30,11 +30,9 @@ namespace Arbiter.States
         public bool PrepareGame(GameProperties gameProperties)
         {
             var supervisors = PrepareSupervisors(gameProperties);
-            var timers = PrepareTimers(gameProperties);
+            var timer = PrepareTimer(gameProperties);
 
-            if (supervisors != null && timers != null) return true;
-            return false;
-
+            return supervisors != null && timer != null;
         }
 
         private IList<SupervisorsService.Supervisor> PrepareSupervisors(GameProperties gameProperties)
@@ -45,16 +43,14 @@ namespace Arbiter.States
             return null;
         }
 
-        private Tuple<IGameTimer, IGameTimer> PrepareTimers(GameProperties gameProperties)
+        private IGameTimer PrepareTimer(GameProperties gameProperties)
         {
             var timings = gameProperties.Timing.GetGameTimings();
             var gametimer = TimeService.Instance.GameTimer;
             gametimer.SetTime(timings.TimeLength);
 
-            var pausetimer = TimeService.Instance.PauseTimer;
-            pausetimer.SetTime(timings.TimeOutLength);
 
-            if (gametimer != null && pausetimer != null) return new Tuple<IGameTimer, IGameTimer>(gametimer, pausetimer);
+            if (gametimer != null ) return gametimer;
 
             return null;
         }

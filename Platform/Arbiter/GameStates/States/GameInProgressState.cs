@@ -50,22 +50,5 @@ namespace Arbiter.States
             }
             return false;
         }
-
-
-        private Tuple<IGameTimer, IGameTimer> PrepareTimers(GameProperties gameProperties)
-        {
-            var timings = gameProperties.Timing.GetGameTimings();
-            var gametimer = TimeService.Instance.GameTimer;
-            gametimer.SetTime(timings.TimeLength);
-
-            var pausetimer = TimeService.Instance.PauseTimer;
-            pausetimer.SetTime(timings.TimeOutLength);
-
-            if (gametimer != null && pausetimer != null) return new Tuple<IGameTimer, IGameTimer>(gametimer, pausetimer);
-
-            return null;
-        }
-
-
     }
 }

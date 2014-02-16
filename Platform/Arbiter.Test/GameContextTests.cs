@@ -88,15 +88,34 @@ namespace Arbiter.Test
             timeContext = new TimeContext(gameProperties);
             gameContext = new GameContext(timeContext);
 
+
+            /*
+             * Для начала попробовать отключить таймеры (то есть сделать всё в одном потоке)
+             * Судя по всему не правильно срабатывает евент у таймера. ПОчему-то через должное время 
+             * Не меняется состояние тайма.
+             * Для начала надо попробовать отключить евент и прогнать всё последовательно
+             * Затем включить евент.
+             * Возможно нужно реализовать писателей-читателей на месте смена контекста
+             */
+
             gameContext.GoNext();
             var currentGameState = gameContext.CurrentGameState;
             var currentTimeState = timeContext.CurrentTimeState;
             var currentTime = timeContext.CurrentTime;
 
+            Assert.That(currentGameState.GetType(),Is.EqualTo(typeof(GamePreparationState)));
+            Assert.That(currentTimeState.GetType(), Is.EqualTo(typeof(NotATimeState)));
+            Assert.That(currentTime, Is.EqualTo(0));
+
             gameContext.GoNext();
             currentGameState = gameContext.CurrentGameState;
             currentTimeState = timeContext.CurrentTimeState;
             currentTime = timeContext.CurrentTime;
+
+            Assert.That(currentGameState.GetType(), Is.EqualTo(typeof(GameInProgressState)));
+            Assert.That(currentTimeState.GetType(), Is.EqualTo(typeof(NotATimeState)));
+            Assert.That(currentTime, Is.EqualTo(0));
+
 
             gameContext.GoNext();
             currentGameState = gameContext.CurrentGameState;

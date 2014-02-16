@@ -7,15 +7,28 @@ namespace Arbiter.States
         public void goNext(TimeContext context)
         {
             disActivateSupervisors(context.GameProperties);
-            TimeService.Instance.PauseTimer.CallAfter(() =>
-            {
+
+            var timer = TimeService.Instance.GameTimer;
+            var timeLength = context.GameProperties.Timing.GetGameTimings().TimeOutLength;
+            timer.SetTime(timeLength);
+            /*
+            * Возможно нужно реализовать писателей-читателей на месте смена контекста
+             * То есть, если тут работает главный поток - евент таймера ждет пока он закончится, а потом меняет состояние
+             * Если работает поток таймера - то главный поток вообще не может войти в goNext
+             * ВОзможно таймеру надо передовать вообще весь goNext
+            */
+            timer.CallAfter(() =>
+                                {
                 context.CurrentTimeInc();
                 if (context.CurrentTime <= context.TimeCount)
                     StateService.Instance.SetStateTo<TimeInProgressState>(context);
                 else
                     StateService.Instance.SetStateTo<TimeLimboState>(context);
+                System.Console.WriteLine("Current time "+ context.CurrentTime);
+                
             });
-            TimeService.Instance.PauseTimer.Start();
+
+            timer.Start();
         }
 
         public string Description
